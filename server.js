@@ -3,13 +3,16 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-const session = require('express-session'); // require session
-const passport = require('passport'); // require passport
+const session = require('express-session'); 
+const passport = require('passport'); 
+const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+var gifsRouter = require('./routes/gifs');
 
 var app = express();
+
+require('dotenv').config();
 
 require('./config/database');
 
@@ -34,7 +37,7 @@ app.use(passport.session());
 
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/gifs', gifsRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
