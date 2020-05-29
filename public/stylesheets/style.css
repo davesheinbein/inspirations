@@ -1,5 +1,21 @@
+html {
+  background-image: url("/images/background-image.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  min-width: 100%;
+  min-height: 100%;
+  width: 100%;
+  height: auto;
+  position: fixed;
+  top: 0;
+  left: 0;
+  /* background: linear-gradient(-45deg, #ffcdb2, #ffb4a2); */
+  /* background-color: #ffb4a2; */
+}
+
 body {
-  padding: 50px;
+  /* padding: 50px; */
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
@@ -9,9 +25,4 @@ a {
 
 .logoimg {
   height: 50px;
-  border-radius: 50%;
-}
-
-main {
-  background-image: '/images/Logo.png';
 }
