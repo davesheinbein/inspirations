@@ -3,7 +3,7 @@ const passport = require('passport')
 
 // The root route renders our only view
 router.get('/', function(req, res) {
-  res.redirect('/gifs');
+  res.render('index', {user:null, title: 'Web App'});
 });
 
 // Login route

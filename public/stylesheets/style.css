@@ -6,3 +6,12 @@ body {
 a {
   color: #00B7FF;
 }
+
+.logoimg {
+  height: 50px;
+  border-radius: 50%;
+}
+
+main {
+  background-image: '/images/Logo.png';
+}

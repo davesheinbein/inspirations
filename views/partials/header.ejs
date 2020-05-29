@@ -4,25 +4,24 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
   <link rel='stylesheet' href='/stylesheets/style.css' />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   <title>Web App</title>
 </head>
 <body>
     <header>
         <div>
-            <a href="/" class="logoimg"><img src="/public/images/Logo.png" alt="LA"/></a>
-            <div>Web App</div> <!-- might delete -->
+            <a href="/"><img src="/images/Logo.png" alt="LA" class="logoimg"/></a>
+            <div><%= title %></div> <!-- might delete -->
         </div>
         <nav>
             <ul class="navActions">
                 <li><a href="/">Home</a></li>
-                ||
                 <li><a href="/gifs">Gifs</a></li>
-                ||
                 <li><a href="/">Videos</a></li>
-                ||
                 <li><a href="/">Favorites</a></li>
-                ||
             </ul>
         </nav>
         <div class="oAuth">

@@ -2,7 +2,7 @@ var router = require('express').Router();
 var gifsCtrl = require('../controllers/gifs');
 
 /* GET gifs listing. */
-router.get('/gifs', gifsCtrl.index);
+router.get('/', gifsCtrl.index);
 
 
 // function isLoggedIn(req, res, next) {
