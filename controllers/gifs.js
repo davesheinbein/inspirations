@@ -20,7 +20,7 @@ function index(req, res, next) {
         gifs, 
         name: req.query.name, 
         sortKey,
-        user: req.user // <==== new
+        user: req.user 
       });
     });
   }
