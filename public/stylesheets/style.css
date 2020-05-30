@@ -1,8 +1,7 @@
 html {
   margin: 0;
   padding: 0;
-  background-image: url("/public/images/background-image.svg");
-  /* background: linear-gradient(-45deg, #ffcdb2, #ffb4a2); */
+  background-image: url("/images/background-image.png");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -13,29 +12,24 @@ html {
   position: fixed;
   top: 0;
   left: 0;
-  /* background-color: #ffb4a2; */
+  background-color: #ffb4a2;
 }
 
 
 body {
-  /* padding: 50px; */
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 14px 'Courier', 'Courier New', 'monospace';
 }
 
 main {
   display: flex;
-  /* flex-direction: column; */
+  flex-direction: column;
   justify-content: center;
-  /* align-items: center; */
+  align-items: center;
   margin: 0 1em;
   min-width: 60%;
   min-height: 80%;
   width: auto 80%;
   height: auto 100%;
-}
-
-a {
-  color: #00B7FF;
 }
 
 .logoimg {
@@ -46,6 +40,18 @@ nav {
   display: flex;
   justify-content: space-between;
   font-family: Arial, Helvetica, sans-serif;
-  background-color: #e5999c;
+  background: linear-gradient(-180deg, #b5838d, #ffb8c6);
   padding: 8px 10px 0;
+}
+
+.navBar {
+  color: #6d6975;
+  font-style: bold;
+  justify-content: center;
+  align-items: center;
+}
+
+.divLine {
+  color: #e2daf5;
+  font-style: bold;
 }
