@@ -8,29 +8,30 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
   <link rel='stylesheet' href='/stylesheets/style.css' />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-  <title>Web App</title>
+  <title><%= title %></title>
 </head>
 <body>
     <header>
+      <nav>
         <div>
-            <a href="/"><img src="/images/Logo.png" alt="LA" class="logoimg"/></a>
-            <div><%= title %></div> <!-- might delete -->
+            <a href="/"><img src="/images/Logo.png" alt="LA" class="logoimg"/> Web App</a>
         </div>
-        <nav>
             <ul class="navActions">
                 <li><a href="/">Home</a></li>
                 <li><a href="/gifs">Gifs</a></li>
                 <li><a href="/">Videos</a></li>
                 <li><a href="/">Favorites</a></li>
             </ul>
-        </nav>
-        <div class="oAuth">
-            <% if (user) { %>
-            <a href="/logout"><i class="material-icons left">trending_flat</i>Log Out</a>
-            <% } else { %>
-            <a href="/auth/google"><i class="material-icons left">vpn_key</i>Login with Google</a>
-            <% } %>
-        </div>
+            <div class="oAuth">
+              <% if (user) { %>
+                <!-- <a href="/logout"><i class="material-icons left">trending_flat</i>Log Out</a> -->
+                <a href="/logout"><i>trending_flat</i>Log Out</a>
+                <% } else { %>
+                  <!-- <a href="/auth/google"><i class="material-icons left">vpn_key</i>Login with Google</a> -->
+                  <a href="/auth/google"><i class="material-icons left">vpn_key</i>Login with Google</a>
+                  <% } %>
+                </div>
+          </nav>
     </header>
   <main>
     <h1><%= title %></h1>

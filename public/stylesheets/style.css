@@ -1,5 +1,8 @@
 html {
-  background-image: url("/images/background-image.svg");
+  margin: 0;
+  padding: 0;
+  background-image: url("/public/images/background-image.svg");
+  /* background: linear-gradient(-45deg, #ffcdb2, #ffb4a2); */
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -10,13 +13,25 @@ html {
   position: fixed;
   top: 0;
   left: 0;
-  /* background: linear-gradient(-45deg, #ffcdb2, #ffb4a2); */
   /* background-color: #ffb4a2; */
 }
+
 
 body {
   /* padding: 50px; */
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+main {
+  display: flex;
+  /* flex-direction: column; */
+  justify-content: center;
+  /* align-items: center; */
+  margin: 0 1em;
+  min-width: 60%;
+  min-height: 80%;
+  width: auto 80%;
+  height: auto 100%;
 }
 
 a {
@@ -25,4 +40,12 @@ a {
 
 .logoimg {
   height: 50px;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #e5999c;
+  padding: 8px 10px 0;
 }
