@@ -1,6 +1,5 @@
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
-
+// const mongoose = require('mongoose');
+// const Schema = mongoose.Schema;
 
 const commentsSchema = new Schema({
     content: {
@@ -15,7 +14,6 @@ const commentsSchema = new Schema({
     }
 }, {timestamps: true});
 
-
 const gifSchema = new Schema({
     title: String,
     src: String,
@@ -23,4 +21,13 @@ const gifSchema = new Schema({
     comments: [commentsSchema],
 }, {timestamps: true});
 
-module.exports = mongoose.model('Gif', gifSchema);
+const videoSchema = new Schema({
+    title: String,
+    src: String,
+    // favorite: { // might delete)
+    //     type: Boolean
+    // },
+    comments: [commentsSchema],
+}, {timestamps: true});
+
+// module.exports = mongoose.model('Gif', gifSchema);

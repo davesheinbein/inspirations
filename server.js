@@ -9,6 +9,8 @@ const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 
 var indexRouter = require('./routes/index');
 var gifsRouter = require('./routes/gifs');
+var videosRouter = require('./routes/videos');
+// var favoritesRouter = require('./routes/favorites');
 
 var app = express();
 
@@ -38,6 +40,8 @@ app.use(passport.session());
 
 app.use('/', indexRouter);
 app.use('/gifs', gifsRouter);
+app.use('/videos', videosRouter);
+// app.use('/favorites', favoritesRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

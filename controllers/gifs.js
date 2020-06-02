@@ -1,35 +1,46 @@
-const Gif = require('../models/gif');
+const User = require('../models/user');
+const Gif = require('../models/gif')
 
 module.exports = {
   index,
-  addGif,
+  newGif,
+  show,
+  create,
   delGif
 };
 
 function index(req, res, next) {
-    // Make the query object to use with Gif.find based up
-    // the user has submitted the search form or now
-    let modelQuery = req.query.name ? {name: new RegExp(req.query.name, 'i')} : {};
-    // Default to sorting by name
-    let sortKey = req.query.sort || 'name';
-    Gif.find(modelQuery)
-    .sort(sortKey).exec(function(err, gifs) {
+    Gif.find({}).exec(function(err, gifs) {
       if (err) return next(err);
       // Passing search values, name & sortKey, for use in the EJS
       res.render('gifs/index', { 
         gifs, 
-        name: req.query.name, 
-        sortKey,
-        user: req.user 
+        user: req.user, // req.user - is our logged in user
+        title: 'Gifs'
+        });
+    });
+}
+
+function create(req, res) {
+  console.log(req.body);
+  Gif.create(req.body);
+    res.redirect('/gifs');
+}
+
+function show(req, res) {
+    User.findById(req.params.id, function(err, gif) {
+      Gif.find({gif : gif._id}, function(err, gifs) {
+        res.render('/gifs/show', { title: 'Gif Details', gif, gifs});
       });
     });
-  }
+}
 
-// req.user - is our logged in user
-function addGif(req, res, next) {
-  
+function newGif(req, res, next) {
+    res.render('gifs/new');
 }
 
 function delGif(req, res, next) {
-
+    Gif.deleteOne({'_id' : req.params.id}, function(err, deleteFunction){
+      res.redirect('/gifs')
+    });
 }

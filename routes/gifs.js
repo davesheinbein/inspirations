@@ -2,7 +2,16 @@ var router = require('express').Router();
 var gifsCtrl = require('../controllers/gifs');
 
 /* GET gifs listing. */
-router.get('/', gifsCtrl.index);
+router.get('/', gifsCtrl.index); 
+
+router.get('/new', gifsCtrl.newGif)
+
+router.get('/:id', gifsCtrl.show)
+
+router.post('/', gifsCtrl.create)
+
+router.delete("/:id", gifsCtrl.delGif)
+
 
 
 // function isLoggedIn(req, res, next) {
@@ -12,5 +21,6 @@ router.get('/', gifsCtrl.index);
 //       res.redirect('/auth/google')
 //   }
 // }
+
 
 module.exports = router;

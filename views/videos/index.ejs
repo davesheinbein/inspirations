@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <title> <!-- replace with sqids --></title>
+</head>
+    <body>
+        <header>
+            <nav>
+                <div>
+                    <a class="navBar" id="logoTxt" href="/"><img src="/images/Logo.png" alt="LA" class="logoimg"/>Videos<!-- replace with sqids --></a>
+                </div>
+                    <ul>
+                        <li><a class="navBar" href="/">Home</a></li>
+                        <li class="divLine">||</li>
+                        <li><a class="navBar" href="/gifs">Gifs</a></li>
+                        <li class="divLine">||</li>
+                        <li><a class="navBar" id="active" href="/videos">Videos</a></li>
+                        <li class="divLine">||</li>
+                        <li><a class="navBar" href="/">Favorites</a></li>
+                    </ul>
+                    <div class="oAuth navBar">
+                      <% if (user) { %>
+                        <a class="navBar" href="/logout"><i class="material-icons left">turned_in</i>Log Out</a>
+                        <% } else { %>
+                        <a class="navBar" href="/auth/google"><i class="material-icons left">turned_in_not</i>Login with Google</a>
+                        <% } %>
+                    </div>
+            </nav>
+        </header>
+  <main>
+    <form action="/videos" method="POST">
+        <label id="submitTitle">Submit a Video</label>
+        <label>Input Video Title</label>
+            <li> <strong>Example: </strong>Lofi Hip Hop Radio</li>
+        <input id="inputForm"  type="text" name="title" placeholder="Title of Video">
+        <br>
+        <label>Input Video Url</label>
+            <ul>Make sure to include a link with embed in it!</ul>
+                <li>1. click share button on youtube or vimeo</li>
+                <li>2. click on embed button</li>
+                <li>3. copy link within the " " following src=</li>
+                <li><strong>Example: </strong>https://www.youtube.com/embed/ifn0u1kwgOk </li>
+        <input id="inputForm" type="text" name="src" placeholder="Url link to video" >
+        <br>
+        <input type="Submit" value="Submit">
+    </form>
+  <h1>Videos <!-- replace with sqids --></h1>
+  <p> Upload and favorite videos!</p>
+  <div class="container"> 
+      <% videos.forEach(function(vid) { %>
+        <iframe width="560" height="315" src="<%= vid.src %> " frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <!-- to delete -->
+        <form action="/videos/<%= vid._id %>?_method=DELETE"
+            class="delete-form" method="POST">
+                <p>Click the X to delete</p>
+                <button class="deleBtn" type="submit">X</button>
+        </form>
+      <% }); %> 
+
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/-SRlNYNTFqA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/QgOM3mJJexM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/IQ3Bs_bm6P8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/fR7VyhSfr-c" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/0U134VpOyn4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/O5RdMvgk8b0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/qjBUgXiNc3g" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/xfnGAaZFkGU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/D5nDgGb27-s" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/lqZWM7n8Gj8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/LcSKrOlnofk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/4wFO1Qqi3nQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/o9KdvcsSYk0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/Q0hXG_RA7vc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  </div>
+</main>
+</body>
+</html>

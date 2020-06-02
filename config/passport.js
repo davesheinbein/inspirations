@@ -1,5 +1,5 @@
 const passport = require('passport');
-const Gif = require('../models/gif')
+const User = require('../models/user')
 const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy; 
 
 
@@ -11,28 +11,28 @@ passport.use(new GoogleStrategy({
     },
     function(accessToken, refreshToken, profile, cb) {
         // a user has logged in with OAuth...
-        Gif.findOne({googleId: profile.id}, function(err, gif) {
+        User.findOne({googleId: profile.id}, function(err, user) {
             if (err) return cb(err);
-            if (gif) {
-                // returning gif
-                if (gif.avatar) {
-                    return cb(null, gif);
+            if (user) {
+                // returning user
+                if (user.avatar) {
+                    return cb(null, user);
                 } else {
-                    gif.avatar = profile.photos[0].value;
-                    gif.save(function(err) {
-                        return cb(null, gif);
+                    user.avatar = profile.photos[0].value;
+                    user.save(function(err) {
+                        return cb(null, user);
                     });
                 }
             } else {
-                // we have a new gif loging in for the first time
-                const newGif = new Gif ({
+                // we have a new user loging in for the first time
+                const newUser = new User ({
                     name: profile.displayName,
                     email: profile.emails[0].value, // emails[0] selects the primary email from a string
                     googleId: profile.id
                 });
-                newGif.save(function(err) {
+                newUser.save(function(err) {
                     if (err) return cb(err);
-                    return cb(null, newGif);
+                    return cb(null, newUser);
                 });
             }
         })
@@ -40,13 +40,13 @@ passport.use(new GoogleStrategy({
 ));
 
 // passport.serializeUser - is called everytime a user logs in
-passport.serializeUser(function(gif, done) {
-    return done(null, gif._id)
+passport.serializeUser(function(user, done) {
+    return done(null, user._id)
 });
 
 // passport.deserializeUser - is called with every users request
 passport.deserializeUser(function(id, done) {
-    Gif.findById(id, function(err, gif) {
-        return done(err, gif);
+    User.findById(id, function(err, user) {
+        return done(err, user);
     });
 });
