@@ -15,9 +15,7 @@ const commentsSchema = new Schema({
 const videoSchema = new Schema({
     title: String,
     src: String,
-    // favorite: { // might delete)
-    //     type: Boolean
-    // },
+    favorite: Boolean,
     comments: [commentsSchema],
 }, {timestamps: true});
 

@@ -7,7 +7,7 @@ router.get('/', function(req, res) {
   if(req.user) {
     user = req.user
   }
-  res.render('index', {user, title: 'Inspirations'});
+  res.render('index', {user, title: 'spirations'});
 });
 
 

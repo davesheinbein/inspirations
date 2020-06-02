@@ -28,11 +28,9 @@ function create(req, res) {
 }
 
 function show(req, res) {
-    User.findById(req.params.id, function(err, gif) {
-      Gif.find({gif : gif._id}, function(err, gifs) {
-        res.render('/gifs/show', { title: 'Gif Details', gif, gifs});
-      });
-    });
+  Gif.findById(req.params.id, function(err, gif) {
+    res.render('gifs/index', { title: 'Gif Details', gif, user: req.user});
+  });
 }
 
 function newGif(req, res, next) {

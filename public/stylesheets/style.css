@@ -39,25 +39,26 @@ nav {
   justify-content: space-between;
   font-family: 'Courier New', 'Courier', 'monospace';
   text-align: center;
-  line-height: space-between;
   background: linear-gradient(-180deg, #b5838d, #ffb8c6);
   padding: 0 1rem ;
   text-decoration: none;
+  box-shadow: none;
 }
 
 .navBar {
   color: #6d6975;
   font-weight: bold;
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   justify-content: center;
   align-items: center;
   text-align: center;
   text-decoration: none;
 }
 
-.navBar:hover {
+.navBar:hover, #active:hover {
   color: #ffcdb2;
-  background-color: none;
+  background-color: #6d6975;
+  opacity: 75%;
   font-style: bold;
 }
 
@@ -84,14 +85,24 @@ main {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 5rem 1rem;
+  margin: 1.5rem 2rem;
   width: auto;
   height: auto;
 }
 
 h1 {
+  color: #6d6975;
   margin: .5rem;
   text-decoration: underline #ffcdb2 dotted;
+  text-shadow: 2px 2px #ffcdb2;
+}
+
+#homeImg {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40%;
+  max-width: 50%;
 }
 
 .deerImg {
@@ -99,8 +110,8 @@ h1 {
   justify-content: center;
   align-items: center;
   margin: 0;
-  width: 25vw;
-  min-width: 60%;
+  width: 80%;
+  min-width: 40%;
 }
 
 section {
@@ -149,6 +160,28 @@ section > li {
   border: 1rem solid #6d6975;
 }
 
+h2 {
+  font-size: 4rem;
+  text-align: center;
+  text-transform: capitalize;
+  margin: 0;
+  padding: 1rem;
+}
+
+/* heart */
+.heartImg {
+  width: 4rem;
+}
+.favBtn {
+  background: none;
+  border: none;
+}
+
+.favBtn:hover, .deleBtn:hover {
+  animation: pulse 1.5s ease infinite;
+}
+
+/* ^^^ */
 .deleBtn {
   font-family: 'futura', 'courier new';
   color: red;
@@ -180,6 +213,10 @@ form {
   margin: 0;
   font-size: 1.5rem;
   width: 60%;
+}
+
+#formBtns {
+  flex-direction: row;
 }
 
 ::placeholder {
@@ -225,4 +262,69 @@ input {
   max-width: 100%;
   margin: 0;
   padding: .25rem .5rem;
+}
+
+#createdByInput {
+  background-color: #ffcdb2;
+  border: 1px solid #6d6975;
+  color: #6d6975;
+  width: 100%;
+  padding: .5rem;
+  text-align: center;
+}
+
+textarea {
+  background-color: #ffcdb2;
+  border: 1px solid #6d6975;
+  width: 135%;
+  height: 10vh;
+  padding: .5rem;
+}
+
+select {
+  color: gold;
+  text-align: center;
+  display: block;
+}
+
+#submitBtn {
+  color: #6d6975;
+  width: 135%;
+  margin: 0;
+  padding: .75rem;
+  border-radius: 50px;
+}
+
+
+/* heart animation */
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.3); }
+  100% { transform: scale(1); }
+}
+/* ^^^ */
+
+@media only screen and (max-device-width: 480px) {
+  html {
+    width: fit-content;
+  }
+
+  .navBar {
+    color: #6d6975;
+    font-weight: bold;
+    font-size: .50rem;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    text-decoration: none;
+  }
+
+  #logoTxt {
+    font-size: .50rem;
+  }
+  
+  h1 {
+    font-size: 2rem;
+  }
 }

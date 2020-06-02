@@ -20,44 +20,44 @@
                     <ul>
                         <li><a class="navBar" href="/">Home</a></li>
                         <li class="divLine">||</li>
-                        <li><a class="navBar" id="active" href="/gifs">Gifs</a></li>
+                        <li><a class="navBar" href="/gifs">Gifs</a></li>
                         <li class="divLine">||</li>
                         <li><a class="navBar" href="/videos">Videos</a></li>
                         <li class="divLine">||</li>
-                        <li><a class="navBar" href="/favorites">Favorites</a></li>
+                        <li><a class="navBar" id="active" href="/favorites">Favorites</a></li>
                     </ul>
                     <div class="oAuth navBar">
                       <% if (user) { %>
                         <a class="navBar" href="/logout"><i class="material-icons left">turned_in</i>Log Out</a>
                         <% } else { %>
-                        <a class="navBar" href="/auth/google"><i class="material-icons left">turned_in_not</i>Login with Google</a>
+                        <a class="navBar" href="/auth/google"><i class="material-icons left">turned_in_not</i>  Login with Google</a>
                         <% } %>
                     </div>
             </nav>
         </header>
   <main>
-    <h1>Favorites<%= title %></h1>
+    <h1><strong>Favorites</strong><%= title %></h1>
     <h1>Gifs <!-- replace with sqids --></h1>
     <p> View your favorite Gifs!</p>
     <div class="container">
-        <% gifs.forEach(function(g) { %> 
-            <img src="<%= g.src %> " alt="<%= g.title %> "/> 
+        <%# gifs.forEach(function(g) { %> 
+            <img src="<%# g.src %> " alt="<%# g.title %> "/> 
             <!-- to delete -->
-            <form action="/gifs/<%= g._id %>?_method=DELETE"
+            <form action="/gifs/<%# g._id %>?_method=DELETE"
                 class="delete-form" method="POST">
                     <p>Click the X to delete</p>
                     <button class="deleBtn" type="submit">X</button>
             </form>
-        <% }); %> 
+        <%# }); %> 
     <h1>Videos <!-- replace with sqids --></h1>
     <p> View your favorite Videos!</p>
     <div class="container"> 
-        <% videos.forEach(function(vid) { %>
-        <iframe width="560" height="315" src="<%= vid.src %> " frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <%# videos.forEach(function(vid) { %>
+        <iframe width="560" height="315" src="<%# vid.src %> " frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         <!-- to delete -->
-        <form action="/videos/<%= vid._id %>?_method=DELETE"
+        <form action="/videos/<%# vid._id %>?_method=DELETE"
             class="delete-form" method="POST">
                 <p>Click the X to delete</p>
                 <button class="deleBtn" type="submit">X</button>
         </form>
-        <% }); %> 
+        <%# }); %> 

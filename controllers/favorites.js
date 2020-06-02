@@ -1,10 +1,10 @@
-const Favorite = require('../models/favorites');
+// const Favorite = require('../models/favorites');
 // const Video = require('../models/video');
 // const Gif = require('../models/gif')
-// const Video = require('../models/video');
+const User = require('../models/user');
 
 module.exports = {
-  index,
+  index//,
 //   show
 };
 
@@ -13,11 +13,11 @@ function index(req, res) {
   if(req.user) {
     user = req.user
   }
-    Favorite.find({}, function(err, favorites) {
+    User.find({}, function(err, favorites) {
       res.render('favorites/index', 
       {
-        videos, 
-        title: 'Favorite', 
+        favorites, 
+        title: 'User', 
         user
       });
     });

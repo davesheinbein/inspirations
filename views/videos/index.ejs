@@ -45,9 +45,9 @@
         <br>
         <label>Input Video Url</label>
             <ul>Make sure to include a link with embed in it!</ul>
-                <li>1. click share button on youtube or vimeo</li>
-                <li>2. click on embed button</li>
-                <li>3. copy link within the " " following src=</li>
+                <li> <strong>1. </strong>Click share button on youtube or vimeo</li>
+                <li><strong>2. </strong>Click on embed button to view Url</li>
+                <li><strong>3. </strong>Copy link within the quotes " " following src=</li>
                 <li><strong>Example: </strong>https://www.youtube.com/embed/ifn0u1kwgOk </li>
         <input id="inputForm" type="text" name="src" placeholder="Url link to video" >
         <br>
@@ -58,11 +58,51 @@
     <p> Upload and favorite videos!</p>
     <div class="container"> 
         <% videos.forEach(function(vid) { %>
-            <iframe width="560" height="315" src="<%= vid.src %> " frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <!-- Video Title -->
+            <h2><%= vid.title %></h2>
+            <!-- Video -->
+            <iframe width="560" height="315" src="<%= vid.src %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <iframe width="560" height="315" <%= vid.src %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <!-- Input comments -->
+            <form id="" method="POST"
+                action="/gifs/<%= vid._id %>/comments">
+            <label>-Created By-</label>
+                <input id="createdByInput" name="User"></input>
+            <label>-Comment-</label>
+                <textarea name="content"></textarea>
+            <label>-Rating-</label>
+                <select name="rating">
+                    <option selected="selected" value="Unrated">Unrated</option>
+                    <option value="1">★</option>
+                    <option value="2">★★</option>
+                    <option value="3">★★★</option>
+                    <option value="4">★★★★</option>
+                    <option value="5">★★★★★</option>
+                </select>
+            <input type="submit" value="Add Comment" id="submitBtn">
+            </form>
+            <!-- Show comments -->
+            <tr>
+                <td class="createdBy"><%= vid.createdby %></td>
+                <td class="comments"><%= vid.content %></td>
+                <td class="ratings"><%= vid.rating %></td>
+                <td>
+                    <form action="/comments/<%= vid._id %>?_method=DELETE"
+                        class="delete-form" method="POST">
+                            <button class="deleBtn" type="submit">X</button>
+                    </form>
+                </td>
+            </tr>
+            <!-- Favorites button -->
+            <form id="formBtns" action="/videos/<%= vid._id %>?_method=POST" 
+                class="favorite-form" method="POST">
+                <p>Click to favorite</p>
+                <button class="favBtn" type="submit"><img class="heartImg" src="/images/fav-heart.png" alt="Heart"></button> <!-- add heart -->
+            </form>
             <!-- to delete -->
-            <form action="/videos/<%= vid._id %>?_method=DELETE"
+            <form id="formBtns" action="/videos/<%= vid._id %>?_method=DELETE"
                 class="delete-form" method="POST">
-                    <p>Click the X to delete</p>
+                    <p>Click to delete</p>
                     <button class="deleBtn" type="submit">X</button>
             </form>
         <% }); %> 

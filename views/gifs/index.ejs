@@ -52,19 +52,57 @@
             <input type="Submit" value="Submit">
         </form>
         <br>
-        <h1>Gifs <!-- replace with sqids --></h1>
+        <h1><%= title %>s</h1>
         <p> Upload your favorite Gifs!</p>
         <div class="container">
             <% gifs.forEach(function(g) { %> 
+                <!-- Gif Title -->
+                <h2><%= g.title %></h2>
+                <!-- Gif -->
                 <img src="<%= g.src %> " alt="<%= g.title %> "/> 
+                <!-- Input comments -->
+                <form id="" method="POST"
+                    action="/gifs/<%= g._id %>/comments">
+                <label>-Created By-</label>
+                    <input id="createdByInput" name="User"></input>
+                <label>-Comment-</label>
+                    <textarea name="content"></textarea>
+                <label>-Rating-</label>
+                    <select name="rating">
+                        <option selected="selected" value="0">Unrated</option>
+                        <option value="1">★</option>
+                        <option value="2">★★</option>
+                        <option value="3">★★★</option>
+                        <option value="4">★★★★</option>
+                        <option value="5">★★★★★</option>
+                    </select>
+                <input type="submit" value="Add Comment" id="submitBtn">
+                </form>
+                <!-- Show comments -->
+                <tr>
+                    <td class="createdBy"><%= g.createdby %></td>
+                    <td class="comments"><%= g.content %></td>
+                    <td class="ratings"><%= g.rating %></td>
+                    <td>
+                        <form action="/comments/<%= g._id %>?_method=DELETE"
+                            class="delete-form" method="POST">
+                                <button class="deleBtn" type="submit">X</button>
+                        </form>
+                    </td>
+                  </tr>
+                <!-- Favorites button -->
+                <form id="formBtns" action="/gifs/<%= g._id %>?_method=POST" 
+                    class="favorite-form" method="POST">
+                    <p>Click to favorite</p>
+                    <button class="favBtn" type="submit"><img class="heartImg" src="/images/fav-heart.png" alt="Heart"></button> <!-- add heart -->
+                </form>
                 <!-- to delete -->
-                <form action="/gifs/<%= g._id %>?_method=DELETE"
+                <form id="formBtns" action="/gifs/<%= g._id %>?_method=DELETE"
                     class="delete-form" method="POST">
-                        <p>Click the X to delete</p>
+                        <p>Click to delete</p>
                         <button class="deleBtn" type="submit">X</button>
                 </form>
             <% }); %> 
-                
             <img src="/images/gifs/angelina-jolie.gif" alt="angelina-jolie"/>
             <img src="/images/gifs/biggie.gif" alt="biggie"/>
             <img src="/images/gifs/bob-marley.gif" alt="bob-marley"/>
