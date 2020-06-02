@@ -16,7 +16,7 @@ function index(req, res, next) {
       res.render('gifs/index', { 
         gifs, 
         user: req.user, // req.user - is our logged in user
-        title: 'Gifs'
+        title: 'Gif'
         });
     });
 }

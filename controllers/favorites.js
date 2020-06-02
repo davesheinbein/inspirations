@@ -1,27 +1,27 @@
-// const Favorite = require('../models/favorites');
+const Favorite = require('../models/favorites');
 // const Video = require('../models/video');
 // const Gif = require('../models/gif')
 // const Video = require('../models/video');
 
-// module.exports = {
-//   index,
+module.exports = {
+  index,
 //   show
-// };
+};
 
-// function index(req, res) {
-//   let user = null
-//   if(req.user) {
-//     user = req.user
-//   }
-//     Favorite.find({}, function(err, favorites) {
-//       res.render('videos/index', 
-//       {
-//         videos, 
-//         title: 'Favorites', 
-//         user
-//       });
-//     });
-// }
+function index(req, res) {
+  let user = null
+  if(req.user) {
+    user = req.user
+  }
+    Favorite.find({}, function(err, favorites) {
+      res.render('favorites/index', 
+      {
+        videos, 
+        title: 'Favorite', 
+        user
+      });
+    });
+}
 
 // function show(req, res) {
 //     User.findById(req.params.id, function(err, gif) {

@@ -18,7 +18,7 @@ function index(req, res) {
       res.render('videos/index', 
       {
         videos, 
-        title: 'Videos', 
+        title: 'Video', 
         user
       });
     });

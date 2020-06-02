@@ -14,7 +14,7 @@
         <header>
             <nav>
                 <div>
-                    <a class="navBar" id="logoTxt" href="/"><img src="/images/Logo.png" alt="LA" class="logoimg"/>Videos<!-- replace with sqids --></a>
+                    <a class="navBar" id="logoTxt" href="/"><img src="/images/Logo.png" alt="LA" class="logoimg"/><%= title %></a>
                 </div>
                     <ul>
                         <li><a class="navBar" href="/">Home</a></li>
@@ -23,7 +23,7 @@
                         <li class="divLine">||</li>
                         <li><a class="navBar" id="active" href="/videos">Videos</a></li>
                         <li class="divLine">||</li>
-                        <li><a class="navBar" href="/">Favorites</a></li>
+                        <li><a class="navBar" href="/favorites">Favorites</a></li>
                     </ul>
                     <div class="oAuth navBar">
                       <% if (user) { %>
@@ -35,6 +35,8 @@
             </nav>
         </header>
   <main>
+    <h1><strong><%= title %></strong>spirations</h1>
+    <br>
     <form action="/videos" method="POST">
         <label id="submitTitle">Submit a Video</label>
         <label>Input Video Title</label>
@@ -51,34 +53,35 @@
         <br>
         <input type="Submit" value="Submit">
     </form>
-  <h1>Videos <!-- replace with sqids --></h1>
-  <p> Upload and favorite videos!</p>
-  <div class="container"> 
-      <% videos.forEach(function(vid) { %>
-        <iframe width="560" height="315" src="<%= vid.src %> " frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        <!-- to delete -->
-        <form action="/videos/<%= vid._id %>?_method=DELETE"
-            class="delete-form" method="POST">
-                <p>Click the X to delete</p>
-                <button class="deleBtn" type="submit">X</button>
-        </form>
-      <% }); %> 
+    <br>
+    <h1>Videos <!-- replace with sqids --></h1>
+    <p> Upload and favorite videos!</p>
+    <div class="container"> 
+        <% videos.forEach(function(vid) { %>
+            <iframe width="560" height="315" src="<%= vid.src %> " frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <!-- to delete -->
+            <form action="/videos/<%= vid._id %>?_method=DELETE"
+                class="delete-form" method="POST">
+                    <p>Click the X to delete</p>
+                    <button class="deleBtn" type="submit">X</button>
+            </form>
+        <% }); %> 
 
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/-SRlNYNTFqA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/QgOM3mJJexM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/IQ3Bs_bm6P8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/fR7VyhSfr-c" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/0U134VpOyn4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/O5RdMvgk8b0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/qjBUgXiNc3g" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/xfnGAaZFkGU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/D5nDgGb27-s" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/lqZWM7n8Gj8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/LcSKrOlnofk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/4wFO1Qqi3nQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/o9KdvcsSYk0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/Q0hXG_RA7vc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-  </div>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/-SRlNYNTFqA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/QgOM3mJJexM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/IQ3Bs_bm6P8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/fR7VyhSfr-c" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/0U134VpOyn4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/O5RdMvgk8b0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/qjBUgXiNc3g" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/xfnGAaZFkGU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/D5nDgGb27-s" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/lqZWM7n8Gj8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/LcSKrOlnofk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/4wFO1Qqi3nQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/o9KdvcsSYk0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/Q0hXG_RA7vc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
 </main>
 </body>
 </html>

@@ -1,5 +1,5 @@
-// const mongoose = require('mongoose');
-// const Schema = mongoose.Schema;
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
 const commentsSchema = new Schema({
     content: {
@@ -30,4 +30,4 @@ const videoSchema = new Schema({
     comments: [commentsSchema],
 }, {timestamps: true});
 
-// module.exports = mongoose.model('Gif', gifSchema);
+module.exports = mongoose.model('Gif', gifSchema, 'Video', videoSchema);

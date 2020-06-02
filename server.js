@@ -5,6 +5,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const session = require('express-session'); 
 const passport = require('passport'); 
+var methodOverride = require('method-override');
 const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 
 var indexRouter = require('./routes/index');
@@ -24,6 +25,7 @@ require('./config/passport');
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
+app.use(methodOverride('_method'));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(logger('dev'));
 app.use(express.json());

@@ -24,7 +24,7 @@
                         <li class="divLine">||</li>
                         <li><a class="navBar" href="/videos">Videos</a></li>
                         <li class="divLine">||</li>
-                        <li><a class="navBar" href="/">Favorites</a></li>
+                        <li><a class="navBar" href="/favorites">Favorites</a></li>
                     </ul>
                     <div class="oAuth navBar">
                       <% if (user) { %>
@@ -36,7 +36,8 @@
             </nav>
         </header>
   <main>
-      <h1><%= title %></h1>
+        <h1><strong><%= title %></strong>spirations</h1>
+        <br>
       <!-- Submit -->
         <form action="/gifs" method="POST">
             <label id="submitTitle">Submit a Gif</label>
@@ -50,37 +51,37 @@
             <br>
             <input type="Submit" value="Submit">
         </form>
-      <h1>Gifs <!-- replace with sqids --></h1>
-      <p> Upload your favorite Gifs!</p>
-      <div class="container">
-          <% gifs.forEach(function(g) { %> 
-            <img src="<%= g.src %> " alt="<%= g.title %> "/> 
-            <!-- to delete -->
-            <form action="/gifs/<%= g._id %>?_method=DELETE"
-                class="delete-form" method="POST">
-                    <p>Click the X to delete</p>
-                    <button class="deleBtn" type="submit">X</button>
-            </form>
-          <% }); %> 
-            
-        <img src="https://media.giphy.com/media/26ufmQSd4DBw0ifU4/giphy.gif" alt="test"/> <!-- testing inputs -->
-        <img src="/images/gifs/angelina-jolie.gif" alt="angelina-jolie"/>
-        <img src="/images/gifs/biggie.gif" alt="biggie"/>
-        <img src="/images/gifs/bob-marley.gif" alt="bob-marley"/>
-        <img src="/images/gifs/christopher-walken.gif" alt="christopher-walken"/>
-        <img src="/images/gifs/drake.gif" alt="drake"/>
-        <img src="/images/gifs/islands.gif" alt="islands"/>
-        <img src="/images/gifs/jimi-hendrix.gif" alt="jimi-hendrix"/>
-        <img src="/images/gifs/kaleidoscope-1.gif" alt="kaleidoscope-1"/>
-        <img src="/images/gifs/kaleidoscope-2.gif" alt="kaleidoscope-2"/>
-        <img src="/images/gifs/lil-yachty.gif" alt="lil-yachty"/>
-        <img src="/images/gifs/morgan-freeman.gif" alt="morgan-freeman"/>
-        <img src="/images/gifs/pyramids.gif" alt="pyramids"/>
-        <img src="/images/gifs/ray-charles.gif" alt="ray-charles"/>
-        <img src="/images/gifs/robin-williams.gif" alt="robin-williams"/>
-        <img src="/images/gifs/the-bikers.gif" alt="the-bikers"/>
-        <img src="/images/gifs/tupac.gif" alt="tupac"/>
-      </div>
+        <br>
+        <h1>Gifs <!-- replace with sqids --></h1>
+        <p> Upload your favorite Gifs!</p>
+        <div class="container">
+            <% gifs.forEach(function(g) { %> 
+                <img src="<%= g.src %> " alt="<%= g.title %> "/> 
+                <!-- to delete -->
+                <form action="/gifs/<%= g._id %>?_method=DELETE"
+                    class="delete-form" method="POST">
+                        <p>Click the X to delete</p>
+                        <button class="deleBtn" type="submit">X</button>
+                </form>
+            <% }); %> 
+                
+            <img src="/images/gifs/angelina-jolie.gif" alt="angelina-jolie"/>
+            <img src="/images/gifs/biggie.gif" alt="biggie"/>
+            <img src="/images/gifs/bob-marley.gif" alt="bob-marley"/>
+            <img src="/images/gifs/christopher-walken.gif" alt="christopher-walken"/>
+            <img src="/images/gifs/drake.gif" alt="drake"/>
+            <img src="/images/gifs/islands.gif" alt="islands"/>
+            <img src="/images/gifs/jimi-hendrix.gif" alt="jimi-hendrix"/>
+            <img src="/images/gifs/kaleidoscope-1.gif" alt="kaleidoscope-1"/>
+            <img src="/images/gifs/kaleidoscope-2.gif" alt="kaleidoscope-2"/>
+            <img src="/images/gifs/lil-yachty.gif" alt="lil-yachty"/>
+            <img src="/images/gifs/morgan-freeman.gif" alt="morgan-freeman"/>
+            <img src="/images/gifs/pyramids.gif" alt="pyramids"/>
+            <img src="/images/gifs/ray-charles.gif" alt="ray-charles"/>
+            <img src="/images/gifs/robin-williams.gif" alt="robin-williams"/>
+            <img src="/images/gifs/the-bikers.gif" alt="the-bikers"/>
+            <img src="/images/gifs/tupac.gif" alt="tupac"/>
+        </div>
   </main>
 </body>
 </html>
