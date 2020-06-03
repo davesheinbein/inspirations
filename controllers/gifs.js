@@ -23,12 +23,14 @@ function index(req, res, next) {
 
 function create(req, res) {
   console.log(req.body);
-  Gif.create(req.body);
+  Gif.create(req.body, function(err, gifs){
     res.redirect('/gifs');
+  });
 }
 
 function show(req, res) {
   Gif.findById(req.params.id, function(err, gif) {
+    console.log(gif);
     res.render('gifs/index', { title: 'Gif Details', gif, user: req.user});
   });
 }

@@ -6,7 +6,7 @@ const commentsSchema = new Schema({
   createdby: {type: Schema.Types.ObjectId, ref: 'User'},
   rating: {
       type: Number, 
-      min: 1, 
+      min: 0, 
       max: 5, 
       default: 5
   }

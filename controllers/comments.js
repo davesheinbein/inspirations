@@ -1,25 +1,30 @@
-const User = require('../models/user');
 const Gif = require('../models/gif');
 const Video = require('../models/video');
 
 module.exports = {
+    showGif,
     createGifComment,
     // deleteGifComment
 };
 
+function showGif(req, res) {
+    Gif.find({},function(err, gifs) {
+        res.render('/gifs/:id/comments', {gifs});
+    });
+}
+
 function createGifComment(req, res) {
-    req.body.createdby = req.user
-    console.log(req.body);
+    req.body.createdby = req.user._id
     Gif.findById(req.params.id, function(err, gif){
-        gif.comments.push(req.body); // Add the comment to the comments array
-        gif.save(function(err){
+        gif.comments.push(req.body); // Add t he comment to the comments array
+        gif.save(function(err, gif){
             res.redirect(`/gifs`);
         });
     });
 }
 
 
-// // neww
+// // new
 // function deleteGifComment(req, res) {
 //     Gif.findOne({'comments._id': req.params.id}, function(err, gif) {
 //         // The embedding lesson has this in the further study section

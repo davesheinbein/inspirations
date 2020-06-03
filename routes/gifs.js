@@ -7,8 +7,6 @@ router.get('/', gifsCtrl.index);
 
 router.get('/new', gifsCtrl.newGif)
 
-router.get('/:id', gifsCtrl.show)
-
 router.post('/', gifsCtrl.create)
 
 router.delete("/:id", gifsCtrl.delGif)
