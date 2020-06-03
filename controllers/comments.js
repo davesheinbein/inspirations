@@ -3,18 +3,11 @@ const Video = require('../models/video');
 const comment= require('../models/user')
 
 module.exports = {
-    showGif,
     createGifComment,
     // deleteGifComment
 };
 
 
-function showGif(req, res) {
-    Gif.findById(req.params.id, function(err, com) {
-      // console.log(gif);
-      res.render('gifs/index', {com});
-    });
-  }
 
 function createGifComment(req, res) {
     req.body.createdby = req.user._id

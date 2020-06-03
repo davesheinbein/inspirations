@@ -10,7 +10,9 @@ module.exports = {
 };
 
 function index(req, res, next) {
-    Gif.find({}).exec(function(err, gifs) {
+    Gif.find({})
+    .populate('comments')
+    .exec(function(err, gifs) {
       if (err) return next(err);
       // Passing search values, name & sortKey, for use in the EJS
       res.render('gifs/index', { 

@@ -76,37 +76,37 @@
                     </select>
                     <input type="submit" value="Add Comment" id="submitBtn">
                 </form>
+                 <!-- Show comments -->
+                 <% if (g.comments.length) { %> 
+                    <table>
+                        <thead>
+                            <tr>
+                                <th class="infoBar">Created By:</th>
+                                <th class="infoBar">Comments</th>
+                                <th class="infoBar">Ratings</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% g.comments.forEach(function(com) { %> 
+                            <tr>
+                                <td><%= user.name %></td> <!-- insert user name --> <!-- If include this will require that you are loggedin to view -->
+                                <td class="createdBy"><%= com.createdby %></td>
+                                <td class="comments"><%= com.content %></td>
+                                <td class="ratings"><%= com.rating %></td>
+                                <td>
+                                    <form action="/comments/<%= com._id %>?_method=DELETE"
+                                        class="delete-form" method="POST">
+                                            <button class="deleBtn" type="submit">X</button>
+                                    </form>
+                                </td>
+                            </tr>
+                            <% }); %> 
+                        </tbody>
+                    </table>
+                <% } else { %> 
+                    <h2>No Comments Yet</h2>
+                <% } %> 
                 <% }); %> 
-                <!-- Show comments -->
-                <%# if (gif.comments.length) { %> 
-                <table>
-                    <thead>
-                        <tr>
-                            <th class="infoBar">Created By:</th>
-                            <th class="infoBar">Comments</th>
-                            <th class="infoBar">Ratings</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <%# gif.comments.forEach(function(com) { %> 
-                        <tr>
-                            <td><%# user.name %></td> <!-- insert user name --> <!-- If include this will require that you are loggedin to view -->
-                            <td class="createdBy"><%# com.createdby %></td>
-                            <td class="comments"><%# com.content %></td>
-                            <td class="ratings"><%# com.rating %></td>
-                            <td>
-                                <form action="/comments/<%# com._id %>?_method=DELETE"
-                                    class="delete-form" method="POST">
-                                        <button class="deleBtn" type="submit">X</button>
-                                </form>
-                            </td>
-                        </tr>
-                        <%# }); %> 
-                    </tbody>
-                </table>
-            <%# } else { %> 
-                <h2>No Comments Yet</h2>
-            <%# } %> 
                 <!-- Favorites button -->
             <% gifs.forEach(function(g) { %> 
                 <form id="formBtns" action="/gifs/<%= g._id %>?_method=POST" 

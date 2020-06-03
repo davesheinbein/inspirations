@@ -19,7 +19,10 @@ const commentsSchema = new Schema({
 const gifSchema = new Schema({
     title: String,
     src: String,
-    // favorite: Boolean,
+    // favorite: {
+    //     type: Boolean,
+    //     default: false
+    // },
     comments: [commentsSchema],
 }, {timestamps: true});
 
