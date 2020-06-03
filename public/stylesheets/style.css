@@ -5,13 +5,14 @@
 }
 
 html {
-  margin: 0;
-  padding: 0;
   box-sizing: border-box;
-  background-image: url("/images/background-image.png") no-repeat center;
+  background-image: url("/images/background-image.png");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+  font-weight: initial;
+  margin: 0;
+  padding: 0;
   width: 100%;
   height: 100%; /* fix */
   min-width: 100%;
@@ -40,9 +41,11 @@ nav {
   font-family: 'Courier New', 'Courier', 'monospace';
   text-align: center;
   background: linear-gradient(-180deg, #b5838d, #ffb8c6);
+  color: none;
   padding: 0 1rem ;
   text-decoration: none;
   box-shadow: none;
+  line-height: initial;
 }
 
 .navBar {
@@ -158,6 +161,10 @@ section > li {
   padding: .5rem;
   margin: 1rem;
   border: 1rem solid #6d6975;
+}
+
+option {
+  text-align: center;
 }
 
 h2 {

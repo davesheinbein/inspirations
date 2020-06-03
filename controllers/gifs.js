@@ -30,7 +30,7 @@ function create(req, res) {
 
 function show(req, res) {
   Gif.findById(req.params.id, function(err, gif) {
-    console.log(gif);
+    // console.log(gif);
     res.render('gifs/index', { title: 'Gif Details', gif, user: req.user});
   });
 }
