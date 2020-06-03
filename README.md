@@ -28,6 +28,8 @@
 #### 5. Node.js
 #### 6. Express
 #### 7. Postman
+#### 8. Heroku
+
 
 
 ☐ Getting Started: Include a link to the deployed app and your Trello board with the project's planning.
