@@ -182,7 +182,7 @@ tr, td {
 }
 
 h2 {
-  font-size: 4rem;
+  font-size: 2rem;
   text-align: center;
   text-transform: capitalize;
   margin: 0;
@@ -276,7 +276,7 @@ input {
 }
 
 #inputForm {
-  background-color: #ffcdb2;
+  background-color: #ffe6d9;
   border: 1px solid #6d6975;
   font-size: 1.5rem;
   width: 80%;
@@ -288,14 +288,14 @@ input {
 #createdByInput {
   background-color: #ffcdb2;
   border: 1px solid #6d6975;
-  color: #6d6975;
+  color: #47454d;
   width: 100%;
   padding: .5rem;
   text-align: center;
 }
 
 textarea {
-  background-color: #ffcdb2;
+  background-color: #ffe6d9;
   border: 1px solid #6d6975;
   width: 135%;
   height: 10vh;
@@ -311,7 +311,7 @@ select {
 #submitBtn {
   color: #6d6975;
   width: 135%;
-  margin: 0;
+  margin: 1rem;
   padding: .75rem;
   border-radius: 50px;
 }

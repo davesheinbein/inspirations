@@ -14,7 +14,9 @@ function index(req, res) {
     if(req.user) {
       user = req.user
     }
-      Video.find().populate('comments').exec(function(err, videos){
+      Video.find()
+      .populate('comments')
+      .exec(function(err, videos){
         res.render('videos/index', 
         {
           videos, 
