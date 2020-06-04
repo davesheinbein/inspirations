@@ -25,7 +25,9 @@ function index(req, res, next) {
 
 function create(req, res) {
   // console.log(req.body);
-  Gif.create(req.body, function (err, gifs) {
+  req.body.createdby = req.user._id;
+  Gif.create(req.body, function (err, gif) {
+    console.log(gif);
     res.redirect("/gifs");
   });
 }

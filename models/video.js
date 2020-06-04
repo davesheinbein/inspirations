@@ -20,6 +20,7 @@ const videoSchema = new Schema(
     title: String,
     src: String,
     comments: [commentsSchema],
+    createdby: { type: Schema.Types.ObjectId, ref: "User" },
   },
   { timestamps: true }
 );

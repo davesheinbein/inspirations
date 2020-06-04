@@ -10,13 +10,9 @@ router.delete("/gifs/:gid/comments/:id", commentsCtrl.deleteGifComment);
 
 router.delete("/videos/:vid/comments/:id", commentsCtrl.deleteVidComment);
 
-// router.get('/gifs/:id/edit', commentsCtrl.editGifCom)
+router.put("/gifs/:id/comments/:cid", commentsCtrl.updateGifCom);
 
-// router.put("/gifs/:id", commentsCtrl.updateGifCom);
-
-// router.get('/videos/:id/edit', commentsCtrl.editVidCom)
-
-// router.put("/videos/:id", commentsCtrl.updateVidCom);
+router.put("/videos/:id/comments/:comid", commentsCtrl.updateVidCom);
 
 function isLoggedIn(req, res, next) {
   if (req.isAuthenticated()) {

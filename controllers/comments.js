@@ -1,23 +1,20 @@
 const Gif = require("../models/gif");
 const Video = require("../models/video");
-const comment = require("../models/user");
 
 module.exports = {
   createGifComment,
   deleteGifComment,
   createVidComment,
   deleteVidComment,
-  editGifCom,
-  //   updateGifCom,
-  //   editVidCom,
-  //   updateVidCom
+  updateGifCom,
+  updateVidCom,
 };
 
 // Gifs
 function createGifComment(req, res) {
   req.body.createdby = req.user._id;
   Gif.findById(req.params.id, function (err, gif) {
-    gif.comments.push(req.body); // Add the comment to the comments array
+    gif.comments.push(req.body);
     gif.save(function (err, gif) {
       res.redirect(`/gifs`);
     });
@@ -26,29 +23,25 @@ function createGifComment(req, res) {
 
 function deleteGifComment(req, res) {
   Gif.findOne({ "comments._id": req.params.id }, function (err, gif) {
-    // The embedding lesson has this in the further study section
-    // Find the comment subdoc
     const comment = gif.comments.id(req.params.id);
-    // Remove the comment subdoc from the array
     comment.remove();
-    // Save the gif doc
     gif.save(function (err) {
-      // Redirect back to show page of gif
       res.redirect(`/gifs`);
     });
   });
 }
 
-function editGifCom(req, res) {
-  const Gif = Gif.getOne(req.params.id);
-  res.render("/gifs/:id/edit", { gif });
+function updateGifCom(req, res) {
+  Gif.findById(req.params.id, function (err, gif) {
+    var comment = gif.comments.id(req.params.cid);
+    comment.content = req.body.content;
+    gif.save(function (err) {
+      comment.save(function (e) {
+        res.redirect("/gifs");
+      });
+    });
+  });
 }
-
-// function updateGifCom(req, res) {
-//   req.body.comments = !!req.body.comments;
-//   Gif.update(req.params.id, req.body);
-//   res.redirect(`/gifs/${req.params.id}`);
-// }
 
 // ^^^^^^
 
@@ -65,15 +58,22 @@ function createVidComment(req, res) {
 
 function deleteVidComment(req, res) {
   Video.findOne({ "comments._id": req.params.id }, function (err, video) {
-    // The embedding lesson has this in the further study section
-    // Find the comment subdoc
     const comment = video.comments.id(req.params.id);
-    // Remove the comment subdoc from the array
     comment.remove();
-    // Save the gif doc
     video.save(function (err) {
-      // Redirect back to show page of gif
       res.redirect(`/videos`);
+    });
+  });
+}
+
+function updateVidCom(req, res) {
+  Video.findById(req.params.id, function (err, video) {
+    var comment = video.comments.id(req.params.comid);
+    comment.content = req.body.content;
+    video.save(function (err) {
+      comment.save(function (e) {
+        res.redirect("/videos");
+      });
     });
   });
 }
