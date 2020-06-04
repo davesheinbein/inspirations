@@ -24,7 +24,7 @@ function index(req, res, next) {
 }
 
 function create(req, res) {
-  console.log(req.body);
+  // console.log(req.body);
   Gif.create(req.body, function(err, gifs){
     res.redirect('/gifs');
   });

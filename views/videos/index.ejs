@@ -64,11 +64,20 @@
             <iframe width="560" height="315" src="<%= vid.src %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
             <!-- Favorites button -->
-            <form id="formBtns" action="/videos/<%= vid._id %>?_method=POST" 
-                class="favorite-form" method="POST">
-                <p>Click to favorite</p>
-                <button class="favBtn" type="submit"><img class="heartImg" src="/images/fav-heart.png" alt="Heart"></button> <!-- add heart -->
-            </form>
+            <% if(user && user.favoriteVideos.includes(vid._id)) { %> 
+                <form id="formBtns" action="/videos/<%= vid._id %>/favorites?_method=DELETE"
+                    class="delete-form" method="POST">
+                        <p>Click to unfavorite</p>
+                        <button class="favBtn" type="submit"><img class="heartImg" src="/images/unfav-heart.png" alt="Heart"></button>
+                </form>
+            <% } else if(user && !user.favoriteVideos.includes(vid._id)) { %>
+                <form id="formBtns" action="/videos/<%= vid._id %>/favorites" 
+                    class="favorite-form" method="POST">
+                    <p>Click to favorite</p>
+                    <button class="favBtn" type="submit"><img class="heartImg" src="/images/fav-heart.png" alt="Heart"></button> 
+                </form>
+            <% }; %>  
+
             <!-- to delete -->
             <form id="formBtns" action="/videos/<%= vid._id %>?_method=DELETE"
                 class="delete-form" method="POST">

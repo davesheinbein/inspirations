@@ -62,15 +62,15 @@
                 <img src="<%= g.src %> " alt="<%= g.title %> "/> 
                 <!-- Favorites button -->
                 <% if(user && user.favoriteGifs.includes(g._id)) { %> 
-                    <form id="formBtns" action="/gifs/<%= g._id %>/favorites?_method=DELETE"
-                        class="delete-form" method="POST">
-                            <button class="favBtn" type="submit"><img class="heartImg" src="/images/fav-heart.png" alt="Heart"></button>
+                    <form id="formBtns" action="/gifs/<%= g._id %>/favorites?_method=DELETE" class="delete-form" method="POST">
+                            <p>Click to unfavorite</p>
+                            <button class="favBtn" type="submit"><img class="heartImg" src="/images/unfav-heart.png" alt="Heart"></button>
                     </form>
-                    <p>This Gif is favorited</p>
                 <% } else if(user && !user.favoriteGifs.includes(g._id)) { %> 
-                    <form id="formBtns" action="/gifs/<%= g._id %>/favorites" class="favorite-form" method="POST">
+                    <form id="formBtns" action="/gifs/<%= g._id %>/favorites" 
+                        class="favorite-form" method="POST">
                         <p>Click to favorite</p>
-                        <button class="favBtn" type="submit"><img class="heartImg" src="/images/fav-heart.png" alt="Heart"></button> <!-- add heart -->
+                        <button class="favBtn" type="submit"><img class="heartImg" src="/images/fav-heart.png" alt="Heart"></button>
                     </form>
                 <% }; %> 
                 <!-- To delete button -->
