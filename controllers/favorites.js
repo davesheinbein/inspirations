@@ -16,7 +16,7 @@ function index(req, res) {
   if(req.user) {
     user = req.user
   }
-    User.findById(req.user._id)
+    User.findById(req.params.id)
     .populate('favoriteVideos')
     .populate('favoriteGifs') 
     .exec(function(err, user){

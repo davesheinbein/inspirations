@@ -37,6 +37,9 @@
         </header>
         <main>
             <h1><strong>Fav</strong><%= title %></h1>
+
+            <% if (user) { %> <!-- New -->
+
             <h1>Gifs</h1>
             <p> View your favorite Gifs!</p>
             <% if(user && user.favoriteGifs.length) { %> 
@@ -81,7 +84,6 @@
             <% } else if(user && !user.favoriteGifs.includes(g._id)) { %> 
                 <h2>No Gifs Favorited</h2>
             <% }; %> 
-
             <h1>Videos</h1>
             <p> View your favorite Videos!</p>
             <% if(user && user.favoriteVideos.length) { %> 
@@ -127,3 +129,16 @@
             <% } else if(user && !user.favoriteVideos.includes(vid._id)) { %>
                 <h2>No Videos Favorited</h2>
             <% }; %>  
+
+        <% } else { %> <!-- New -->
+
+        <h2>Log in to see Favorites</h2>
+        <div class="oAuth navBar">
+            <!-- Can delete --> <% if (user) { %>
+            <!-- Can delete --> <a class="navBar" href="/logout"><i class="material-icons left">turned_in</i>Log Out</a>
+            <!-- Can delete --> <% } else { %>
+            <a class="navBar" href="/auth/google"><i class="material-icons left">turned_in_not</i>  Login with Google</a>
+            <!-- Can delete --><% } %>
+        </div>
+
+        <% }; %>  <!-- New -->
