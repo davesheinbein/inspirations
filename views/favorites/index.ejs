@@ -1,144 +1,197 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-  <link rel='stylesheet' href='/stylesheets/style.css' />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-  <title>Fav<%= title %></title>
-</head>
-    <body>
-        <header>
-            <nav>
-                <div>
-                    <a class="navBar" id="logoTxt" href="/"><img src="/images/Logo.png" alt="LA" class="logoimg"/>Fav<%= title %></a>
-                    <!-- <a class="navBar" href="/"> replace with sqids </a> -->
-                </div>
-                    <ul>
-                        <li><a class="navBar" href="/">Home</a></li>
-                        <li class="divLine">||</li>
-                        <li><a class="navBar" href="/gifs">Gifs</a></li>
-                        <li class="divLine">||</li>
-                        <li><a class="navBar" href="/videos">Videos</a></li>
-                        <li class="divLine">||</li>
-                        <li><a class="navBar" id="active" href="/favorites">Favorites</a></li>
-                    </ul>
-                    <div class="oAuth navBar">
-                        <% if (user) { %>
-                        <a class="navBar" href="/logout"><i class="material-icons left">turned_in</i>Log Out</a>
-                        <% } else { %>
-                        <a class="navBar" href="/auth/google"><i class="material-icons left">turned_in_not</i>  Login with Google</a>
-                        <% } %>
-                    </div>
-            </nav>
-        </header>
-        <main>
-            <h1><strong>Fav</strong><%= title %></h1>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <title>Fav<%= title %></title>
+  </head>
 
-            <% if (user) { %> <!-- New -->
-
-            <h1>Gifs</h1>
-            <p> View your favorite Gifs!</p>
-            <% if(user && user.favoriteGifs.length) { %> 
-            <div class="container">
-                <% user.favoriteGifs.forEach(function(g) { %> 
-                    <img src="<%= g.src %> " alt="<%= g.title %> "/> 
-                    <!-- to remove favorite gif -->
-                    <form id="formBtns" action="/gifs/<%= g._id %>/favorites?_method=DELETE" class="delete-form" method="POST">
-                        <p>Click to unfavorite</p>
-                        <button class="favBtn" type="submit"><img class="heartImg" src="/images/unfav-heart.png" alt="Heart"></button>
-                    </form>
-                    <% if (g.comments.length) { %> 
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th class="infoBar">Created By</th>
-                                    <th class="infoBar">Comments</th>
-                                    <th class="infoBar">Ratings</th>
-                                    <th class="infoBar">Delete</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <% g.comments.forEach(function(com) { %> 
-                                <tr>
-                                    <td class="createdby"><%= com.createdby.name %></td> 
-                                    <td class="comments"><%= com.content %></td>
-                                    <td class="ratings"><%= com.rating %></td>
-                                    <td>
-                                        <form action="/gifs/<%= g._id %>/comments/<%= com._id %>?_method=DELETE"
-                                            class="delete-form" method="POST">
-                                                <button class="deleBtn" type="submit">X</button>
-                                        </form>
-                                    </td>
-                                </tr>
-                                <% }); %> 
-                            </tbody>
-                        </table>
-                        <% } else { %> 
-                            <p>^No Comments Yet^</p>
-                        <% } %> 
-                <% }); %> 
-            <% } else if(user && !user.favoriteGifs.includes(g._id)) { %> 
-                <h2>No Gifs Favorited</h2>
-            <% }; %> 
-            <h1>Videos</h1>
-            <p> View your favorite Videos!</p>
-            <% if(user && user.favoriteVideos.length) { %> 
-            <div class="container"> 
-                <% user.favoriteVideos.forEach(function(vid) { %>
-                <iframe width="560" height="315" src="<%= vid.src %> " frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                <!-- to remove favorite video -->
-                <form id="formBtns" action="/videos/<%= vid._id %>/favorites?_method=DELETE"
-                    class="delete-form" method="POST">
-                        <p>Click to unfavorite</p>
-                        <button class="favBtn" type="submit"><img class="heartImg" src="/images/unfav-heart.png" alt="Heart"></button>
-                </form>
-                <% if (vid.comments.length) { %> 
-                    <table>
-                        <thead>
-                            <tr>
-                                <th class="infoBar">Created By</th>
-                                <th class="infoBar">Comments</th>
-                                <th class="infoBar">Ratings</th>
-                                <th class="infoBar">Delete</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <% vid.comments.forEach(function(com) { %> 
-                            <tr>
-                                <td class="createdBy"><%= user.name %></td>
-                                <td class="comments"><%= com.content %></td>
-                                <td class="ratings"><%= com.rating %></td>
-                                <td>
-                                    <form action="/videos/<%= vid._id %>/comments/<%= com._id %>?_method=DELETE"
-                                        class="delete-form" method="POST">
-                                            <button class="deleBtn" type="submit">X</button>
-                                    </form>
-                                </td>
-                            </tr>
-                            <% }); %> 
-                        </tbody>
-                    </table>
-                    <% } else { %> 
-                        <p>^No Comments Yet^</p>
-                    <% } %> 
-                <% }); %> 
-            <% } else if(user && !user.favoriteVideos.includes(vid._id)) { %>
-                <h2>No Videos Favorited</h2>
-            <% }; %>  
-
-        <% } else { %> <!-- New -->
-
-        <h2>Log in to see Favorites</h2>
-        <div class="oAuth navBar">
-            <!-- Can delete --> <% if (user) { %>
-            <!-- Can delete --> <a class="navBar" href="/logout"><i class="material-icons left">turned_in</i>Log Out</a>
-            <!-- Can delete --> <% } else { %>
-            <a class="navBar" href="/auth/google"><i class="material-icons left">turned_in_not</i>  Login with Google</a>
-            <!-- Can delete --><% } %>
+  <body>
+    <header>
+      <nav>
+        <div>
+          <a class="navBar" id="logoTxt" href="/"
+            ><img src="/images/Logo.png" alt="LA" class="logoimg" />Fav<%= title
+            %></a
+          >
+          <!-- <a class="navBar" href="/"> replace with sqids </a> -->
         </div>
+        <ul>
+          <li><a class="navBar" href="/">Home</a></li>
+          <li class="divLine">||</li>
+          <li><a class="navBar" href="/gifs">Gifs</a></li>
+          <li class="divLine">||</li>
+          <li><a class="navBar" href="/videos">Videos</a></li>
+          <li class="divLine">||</li>
+          <li><a class="navBar" id="active" href="/favorites">Favorites</a></li>
+        </ul>
+        <div class="oAuth navBar">
+          <% if (user) { %>
+          <a class="navBar" href="/logout"
+            ><i class="material-icons left">turned_in</i>Log Out</a
+          >
+          <% } else { %>
+          <a class="navBar" href="/auth/google"
+            ><i class="material-icons left">turned_in_not</i> Login with
+            Google</a
+          >
+          <% } %>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <h1><strong>Fav</strong><%= title %></h1>
 
-        <% }; %>  <!-- New -->
+      <% if (user) { %>
+      <!-- New -->
+
+      <h1>Gifs</h1>
+      <p>View your favorite Gifs!</p>
+      <% if(user && user.favoriteGifs.length) { %>
+      <div class="container">
+        <% user.favoriteGifs.forEach(function(g) { %>
+        <img src="<%= g.src %> " alt="<%= g.title %> " />
+        <!-- to remove favorite gif -->
+        <form
+          id="formBtns"
+          action="/gifs/<%= g._id %>/favorites?_method=DELETE"
+          class="delete-form"
+          method="POST"
+        >
+          <p>Click to unfavorite</p>
+          <button class="favBtn" type="submit">
+            <img class="heartImg" src="/images/unfav-heart.png" alt="Heart" />
+          </button>
+        </form>
+        <% if (g.comments.length) { %>
+        <table>
+          <thead>
+            <tr>
+              <th class="infoBar">Created By</th>
+              <th class="infoBar">Comments</th>
+              <th class="infoBar">Ratings</th>
+              <th class="infoBar">Delete</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% g.comments.forEach(function(com) { %>
+            <tr>
+              <td class="createdby"><%= com.createdby.name %></td>
+              <td class="comments"><%= com.content %></td>
+              <td class="ratings"><%= com.rating %></td>
+              <td>
+                <form
+                  action="/gifs/<%= g._id %>/comments/<%= com._id %>?_method=DELETE"
+                  class="delete-form"
+                  method="POST"
+                >
+                  <button class="deleBtn" type="submit">X</button>
+                </form>
+              </td>
+            </tr>
+            <% }); %>
+          </tbody>
+        </table>
+        <% } else { %>
+        <p>^No Comments Yet^</p>
+        <% } %> <% }); %> <% } else if(user &&
+        !user.favoriteGifs.includes(g._id)) { %>
+        <h2>No Gifs Favorited</h2>
+        <% }; %>
+        <h1>Videos</h1>
+        <p>View your favorite Videos!</p>
+        <% if(user && user.favoriteVideos.length) { %>
+        <div class="container">
+          <% user.favoriteVideos.forEach(function(vid) { %>
+          <iframe
+            width="560"
+            height="315"
+            src="<%= vid.src %> "
+            frameborder="0"
+            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+          ></iframe>
+          <!-- to remove favorite video -->
+          <form
+            id="formBtns"
+            action="/videos/<%= vid._id %>/favorites?_method=DELETE"
+            class="delete-form"
+            method="POST"
+          >
+            <p>Click to unfavorite</p>
+            <button class="favBtn" type="submit">
+              <img class="heartImg" src="/images/unfav-heart.png" alt="Heart" />
+            </button>
+          </form>
+          <% if (vid.comments.length) { %>
+          <table>
+            <thead>
+              <tr>
+                <th class="infoBar">Created By</th>
+                <th class="infoBar">Comments</th>
+                <th class="infoBar">Ratings</th>
+                <th class="infoBar">Delete</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% vid.comments.forEach(function(com) { %>
+              <tr>
+                <td class="createdBy"><%= user.name %></td>
+                <td class="comments"><%= com.content %></td>
+                <td class="ratings"><%= com.rating %></td>
+                <td>
+                  <form
+                    action="/videos/<%= vid._id %>/comments/<%= com._id %>?_method=DELETE"
+                    class="delete-form"
+                    method="POST"
+                  >
+                    <button class="deleBtn" type="submit">X</button>
+                  </form>
+                </td>
+              </tr>
+              <% }); %>
+            </tbody>
+          </table>
+          <% } else { %>
+          <p>^No Comments Yet^</p>
+          <% } %> <% }); %> <% } else if(user &&
+          !user.favoriteVideos.includes(vid._id)) { %>
+          <h2>No Videos Favorited</h2>
+          <% }; %> <% } else { %>
+          <!-- New -->
+
+          <h2>Log in to see Favorites</h2>
+          <div class="oAuth navBar">
+            <!-- Can delete -->
+            <% if (user) { %>
+            <!-- Can delete -->
+            <a class="navBar" href="/logout"
+              ><i class="material-icons left">turned_in</i>Log Out</a
+            >
+            <!-- Can delete -->
+            <% } else { %>
+            <a class="navBar" href="/auth/google"
+              ><i class="material-icons left">turned_in_not</i> Login with
+              Google</a
+            >
+            <!-- Can delete --><% } %>
+          </div>
+
+          <% }; %>
+          <!-- New -->
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

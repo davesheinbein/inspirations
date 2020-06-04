@@ -15,15 +15,13 @@ html {
   background-position: center;
   font-weight: initial;
   width: 100%;
-  height: 100%; 
+  height: 100%;
   min-width: 100%;
   top: 0;
   left: 0;
   background-color: #ffcdb2;
-  font-family: 'Courier New', 'Courier', 'monospace';
+  font-family: "Courier New", "Courier", "monospace";
 }
-
-
 
 /* Heading and Nav */
 header {
@@ -41,11 +39,11 @@ header {
 nav {
   display: flex;
   justify-content: space-between;
-  font-family: 'Courier New', 'Courier', 'monospace';
+  font-family: "Courier New", "Courier", "monospace";
   text-align: center;
   background: linear-gradient(-180deg, #b5838d, #ffb8c6);
   color: none;
-  padding: 0 1rem ;
+  padding: 0 1rem;
   text-decoration: none;
   box-shadow: none;
   /* line-height: 5rem; */
@@ -61,7 +59,8 @@ nav {
   text-decoration: none;
 }
 
-.navBar:hover, #active:hover {
+.navBar:hover,
+#active:hover {
   color: #ffcdb2;
   background-color: #6d6975;
   opacity: 75%;
@@ -72,7 +71,7 @@ nav {
   color: #ffcdb2;
   background-color: #ffcdb2;
   font-style: bold;
-  height: .5rem;
+  height: 0.5rem;
 }
 
 .divLine {
@@ -82,7 +81,7 @@ nav {
 
 /* Body content */
 body {
-  font-family: 'Courier', 'Courier New', 'monospace';
+  font-family: "Courier", "Courier New", "monospace";
   height: 1rem;
 }
 
@@ -98,7 +97,7 @@ main {
 
 h1 {
   color: #6d6975;
-  margin: .5rem;
+  margin: 0.5rem;
   text-decoration: underline #ffcdb2 dotted;
   text-shadow: 2px 2px #ffcdb2;
 }
@@ -128,7 +127,7 @@ section {
 }
 
 section > li {
-  padding: 1rem .5rem;
+  padding: 1rem 0.5rem;
 }
 
 .container {
@@ -148,7 +147,7 @@ section > li {
   background-color: #e2daf5;
   width: 80%;
   height: auto;
-  padding: .5rem;
+  padding: 0.5rem;
   margin: 1rem;
   border: 1rem solid #6d6975;
 }
@@ -161,7 +160,7 @@ section > li {
   background-color: #e2daf5;
   width: 100%;
   max-width: 150%;
-  padding: .5rem;
+  padding: 0.5rem;
   margin: 1rem;
   border: 1rem solid #6d6975;
 }
@@ -171,12 +170,15 @@ th {
   text-align: center;
 }
 
-tr, td {
+tr,
+td {
   text-align: center;
   font-size: 1rem;
 }
 
-.createdBy, .comments, .rating {
+.createdBy,
+.comments,
+.rating {
   text-transform: capitalize;
   justify-items: center;
 }
@@ -198,13 +200,14 @@ h2 {
   border: none;
 }
 
-.favBtn:hover, .deleBtn:hover {
+.favBtn:hover,
+.deleBtn:hover {
   animation: pulse 1.5s ease infinite;
 }
 
 /* ^^^ */
 .deleBtn {
-  font-family: 'futura', 'courier new';
+  font-family: "futura", "courier new";
   color: red;
   font-size: 2.5rem;
   font-weight: bold;
@@ -238,7 +241,7 @@ form {
 
 #formBtns {
   flex-direction: row;
-  padding: .5rem 1rem;
+  padding: 0.5rem 1rem;
 }
 
 form > p {
@@ -278,7 +281,7 @@ input {
   width: 80%;
   max-width: 100%;
   margin: 0;
-  padding: .75rem;
+  padding: 0.75rem;
 }
 
 #inputForm {
@@ -288,7 +291,7 @@ input {
   width: 80%;
   max-width: 100%;
   margin: 0;
-  padding: .25rem .5rem;
+  padding: 0.25rem 0.5rem;
 }
 
 #createdByInput {
@@ -296,7 +299,7 @@ input {
   border: 1px solid #6d6975;
   color: #47454d;
   width: 100%;
-  padding: .5rem;
+  padding: 0.5rem;
   text-align: center;
 }
 
@@ -305,7 +308,7 @@ textarea {
   border: 1px solid #6d6975;
   width: 135%;
   height: 10vh;
-  padding: .5rem;
+  padding: 0.5rem;
 }
 
 select {
@@ -318,17 +321,22 @@ select {
   color: #6d6975;
   width: 135%;
   margin: 1rem;
-  padding: .75rem;
+  padding: 0.75rem;
   border-radius: 50px;
 }
-
 
 /* heart animation */
 
 @keyframes pulse {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.3); }
-  100% { transform: scale(1); }
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.3);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 /* ^^^ */
 
@@ -340,7 +348,7 @@ select {
   .navBar {
     color: #6d6975;
     font-weight: bold;
-    font-size: .50rem;
+    font-size: 0.5rem;
     justify-content: center;
     align-items: center;
     text-align: center;
@@ -348,9 +356,9 @@ select {
   }
 
   #logoTxt {
-    font-size: .50rem;
+    font-size: 0.5rem;
   }
-  
+
   h1 {
     font-size: 2rem;
   }

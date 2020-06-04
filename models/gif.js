@@ -1,25 +1,29 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-
-const commentsSchema = new Schema({
+const commentsSchema = new Schema(
+  {
     content: {
-        type: String
+      type: String,
     },
-    createdby: {type: Schema.Types.ObjectId, ref: 'User'},
+    createdby: { type: Schema.Types.ObjectId, ref: "User" },
     rating: {
-        type: Number, 
-        min: 0, 
-        max: 5, 
-        default: 5
+      type: Number,
+      min: 0,
+      max: 5,
+      default: 5,
     },
-}, {timestamps: true});
+  },
+  { timestamps: true }
+);
 
-
-const gifSchema = new Schema({
+const gifSchema = new Schema(
+  {
     title: String,
     src: String,
     comments: [commentsSchema],
-}, {timestamps: true});
+  },
+  { timestamps: true }
+);
 
-module.exports = mongoose.model('Gif', gifSchema);
+module.exports = mongoose.model("Gif", gifSchema);

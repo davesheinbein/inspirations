@@ -1,170 +1,207 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-  <link rel='stylesheet' href='/stylesheets/style.css' />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-  <title> <!-- replace with sqids --></title>
-</head>
-    <body>
-        <header>
-            <nav>
-                <div>
-                    <a class="navBar" id="logoTxt" href="/"><img src="/images/Logo.png" alt="LA" class="logoimg"/><%= title %>spirations</a>
-                </div>
-                    <ul>
-                        <li><a class="navBar" href="/">Home</a></li>
-                        <li class="divLine">||</li>
-                        <li><a class="navBar" href="/gifs">Gifs</a></li>
-                        <li class="divLine">||</li>
-                        <li><a class="navBar" id="active" href="/videos">Videos</a></li>
-                        <li class="divLine">||</li>
-                        <li><a class="navBar" href="/favorites">Favorites</a></li>
-                    </ul>
-                    <div class="oAuth navBar">
-                      <% if (user) { %>
-                        <a class="navBar" href="/logout"><i class="material-icons left">turned_in</i>Log Out</a>
-                        <% } else { %>
-                        <a class="navBar" href="/auth/google"><i class="material-icons left">turned_in_not</i>Login with Google</a>
-                        <% } %>
-                    </div>
-            </nav>
-        </header>
-  <main>
-    <h1><strong><%= title %></strong>spirations</h1>
-    <br>
-    <form action="/videos" method="POST">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <title>
+      <!-- replace with sqids -->
+    </title>
+  </head>
+
+  <body>
+    <header>
+      <nav>
+        <div>
+          <a class="navBar" id="logoTxt" href="/"
+            ><img src="/images/Logo.png" alt="LA" class="logoimg" /><%= title
+            %>spirations</a
+          >
+        </div>
+        <ul>
+          <li><a class="navBar" href="/">Home</a></li>
+          <li class="divLine">||</li>
+          <li><a class="navBar" href="/gifs">Gifs</a></li>
+          <li class="divLine">||</li>
+          <li><a class="navBar" id="active" href="/videos">Videos</a></li>
+          <li class="divLine">||</li>
+          <li><a class="navBar" href="/favorites">Favorites</a></li>
+        </ul>
+        <div class="oAuth navBar">
+          <% if (user) { %>
+          <a class="navBar" href="/logout"
+            ><i class="material-icons left">turned_in</i>Log Out</a
+          >
+          <% } else { %>
+          <a class="navBar" href="/auth/google"
+            ><i class="material-icons left">turned_in_not</i>Login with
+            Google</a
+          >
+          <% } %>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <h1><strong><%= title %></strong>spirations</h1>
+      <br />
+      <form action="/videos" method="POST">
         <label id="submitTitle">Submit a Video</label>
         <label>Input Video Title</label>
-            <li> <strong>Example: </strong>Lofi Hip Hop Radio</li>
-        <input id="inputForm"  type="text" name="title" placeholder="Title of Video">
-        <br>
+        <li><strong>Example: </strong>Lofi Hip Hop Radio</li>
+        <input
+          id="inputForm"
+          type="text"
+          name="title"
+          placeholder="Title of Video"
+        />
+        <br />
         <label>Input Youtube Video Url</label>
-            <!-- <ul>Make sure to include a link with embed in it!</ul>
+        <!-- <ul>Make sure to include a link with embed in it!</ul>
                 <li> <strong>1. </strong>Click share button on youtube or vimeo</li>
                 <li><strong>2. </strong>Click on embed button to view Url</li>
                 <li><strong>3. </strong>Copy link within the quotes " " following src=</li> -->
-                <li><strong>Example: </strong>https://www.youtube.com/embed/ifn0u1kwgOk </li>
-        <input id="inputForm" type="text" name="src" placeholder="Url link to video" >
-        <br>
-        <input type="Submit" value="Submit">
-    </form>
-    <br>
-    <h1>Videos <!-- replace with sqids --></h1>
-    <p> Upload and favorite videos!</p>
-    <div class="container"> 
+        <li>
+          <strong>Example: </strong>https://www.youtube.com/embed/ifn0u1kwgOk
+        </li>
+        <input
+          id="inputForm"
+          type="text"
+          name="src"
+          placeholder="Url link to video"
+        />
+        <br />
+        <input type="Submit" value="Submit" />
+      </form>
+      <br />
+      <h1>
+        Videos
+        <!-- replace with sqids -->
+      </h1>
+      <p>Upload and favorite videos!</p>
+      <div class="container">
         <% videos.forEach(function(vid) { %>
-            <!-- Video Title -->
-            <h2><%= vid.title %></h2>
-            <!-- Video -->
-            <iframe width="560" height="315" src="<%= vid.src %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <!-- Video Title -->
+        <h2><%= vid.title %></h2>
+        <!-- Video -->
+        <iframe
+          width="560"
+          height="315"
+          src="<%= vid.src %>"
+          frameborder="0"
+          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></iframe>
 
-            <!-- Favorites button -->
-            <% if(user && user.favoriteVideos.includes(vid._id)) { %> 
-                <form id="formBtns" action="/videos/<%= vid._id %>/favorites?_method=DELETE"
-                    class="delete-form" method="POST">
-                    <p>Unfavorite</p>
-                    <button class="favBtn" type="submit"><img class="heartImg" src="/images/unfav-heart.png" alt="Heart"></button>
-                </form>
-            <% } else if(user && !user.favoriteVideos.includes(vid._id)) { %>
-                <form id="formBtns" action="/videos/<%= vid._id %>/favorites" 
-                    class="favorite-form" method="POST">
-                    <p>Favorite</p>
-                    <button class="favBtn" type="submit"><img class="heartImg" src="/images/fav-heart.png" alt="Heart"></button> 
-                </form>
-            <% }; %>  
+        <!-- Favorites button -->
+        <% if(user && user.favoriteVideos.includes(vid._id)) { %>
+        <form
+          id="formBtns"
+          action="/videos/<%= vid._id %>/favorites?_method=DELETE"
+          class="delete-form"
+          method="POST"
+        >
+          <p>Unfavorite</p>
+          <button class="favBtn" type="submit">
+            <img class="heartImg" src="/images/unfav-heart.png" alt="Heart" />
+          </button>
+        </form>
+        <!-- to delete comment -->
+        <form
+          id="formBtns"
+          action="/videos/<%= vid._id %>?_method=DELETE"
+          class="delete-form"
+          method="POST"
+        >
+          <p>Delete</p>
+          <button class="deleBtn" type="submit">X</button>
+        </form>
+        <% } else if(user && !user.favoriteVideos.includes(vid._id)) { %>
+        <form
+          id="formBtns"
+          action="/videos/<%= vid._id %>/favorites"
+          class="favorite-form"
+          method="POST"
+        >
+          <p>Favorite</p>
+          <button class="favBtn" type="submit">
+            <img class="heartImg" src="/images/fav-heart.png" alt="Heart" />
+          </button>
+        </form>
+        <!-- to delete comment -->
+        <form
+          id="formBtns"
+          action="/videos/<%= vid._id %>?_method=DELETE"
+          class="delete-form"
+          method="POST"
+        >
+          <p>Delete</p>
+          <button class="deleBtn" type="submit">X</button>
+        </form>
+        <% }; %>
 
-            <!-- to delete comment -->
-            <form id="formBtns" action="/videos/<%= vid._id %>?_method=DELETE"
-                class="delete-form" method="POST">
-                <p>Delete</p>
-                <button class="deleBtn" type="submit">X</button>
-            </form>
-            <!-- Input comments -->
-            <form id="" method="POST"
-                action="/videos/<%= vid._id %>/comments">
-            <label>-Comment-</label>
-                <textarea name="content"></textarea>
-            <label>-Rating-</label>
-                <select name="rating">
-                    <option value="Unrated">Unrated</option>
-                    <option value="1">★</option>
-                    <option value="2">★★</option>
-                    <option value="3">★★★</option>
-                    <option value="4">★★★★</option>
-                    <option selected="selected" value="5">★★★★★</option>
-                </select>
-            <input type="submit" value="Add Comment" id="submitBtn">
-            </form>
-            <!-- Show comments -->
-            <% if (vid.comments.length) { %> 
-                <table>
-                    <thead>
-                        <tr>
-                            <th class="infoBar">Created By</th>
-                            <th class="infoBar">Comments</th>
-                            <th class="infoBar">Ratings</th>
-                            <th class="infoBar">Delete</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <% vid.comments.forEach(function(com) { %> 
-                        <tr>
-                            <td class="createdBy"><%= user.name %></td>
-                            <td class="comments"><%= com.content %></td>
-                            <td class="ratings"><%= com.rating %></td>
-                            <td>
-                                <% if (com.createdby.equals(user && user._id)) { %> 
-                                <form action="/videos/<%= vid._id %>/comments/<%= com._id %>?_method=DELETE"
-                                    class="delete-form" method="POST">
-                                        <button class="deleBtn" type="submit">X</button>
-                                </form>
-                                <% } else { %> 
-                                    <p>...</p>
-                                <% }; %> 
-                            </td>
-                        </tr>
-                        <% }); %> 
-                    </tbody>
-                </table>
-                <% } else { %> 
-                    <p>^No Comments Yet^</p>
-                <% } %> 
-            <% }); %> 
-            <h1>Static Videos</h1>
-                <h2>Funny Tupac Moments</h2>
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/-SRlNYNTFqA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                <h2>10 Unforgetable Jimi Hendrix Moments</h2>
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/QgOM3mJJexM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                <h2>Biking Fails</h2>
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/IQ3Bs_bm6P8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                <h2>Best Christopher Walken Interviews</h2>
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/fR7VyhSfr-c" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                <h2>Drake Being Hilarious</h2>
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/0U134VpOyn4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                <h2>Electric Sheep</h2>
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/O5RdMvgk8b0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                <h2>Best Bob Marley Moments</h2>
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/qjBUgXiNc3g" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                <h2>Best of Lil Yachty</h2>
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/xfnGAaZFkGU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                <h2>Biggie making an Appearance</h2>
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/D5nDgGb27-s" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                <h2>Morgan Freeman Funny Narration</h2>
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/lqZWM7n8Gj8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                <h2>Best Robin Williams Interviews</h2>
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/LcSKrOlnofk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                <h2>Most Beautiful Islands in the World</h2>
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/4wFO1Qqi3nQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                <h2>Best Angelina Jolie Performances</h2>
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/o9KdvcsSYk0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                <h2>Climbing the Pyramids</h2>
-                        <iframe width="560" height="315" src="https://www.youtube.com/embed/Q0hXG_RA7vc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    </div>
-</main>
-</body>
+        <!-- Input comments -->
+        <form id="" method="POST" action="/videos/<%= vid._id %>/comments">
+          <label>-Comment-</label>
+          <textarea name="content"></textarea>
+          <label>-Rating-</label>
+          <select name="rating">
+            <option value="Unrated">Unrated</option>
+            <option value="1">★</option>
+            <option value="2">★★</option>
+            <option value="3">★★★</option>
+            <option value="4">★★★★</option>
+            <option selected="selected" value="5">★★★★★</option>
+          </select>
+          <input type="submit" value="Add Comment" id="submitBtn" />
+        </form>
+        <!-- Show comments -->
+        <% if (vid.comments.length) { %>
+        <table>
+          <thead>
+            <tr>
+              <th class="infoBar">Created By</th>
+              <th class="infoBar">Comments</th>
+              <th class="infoBar">Ratings</th>
+              <th class="infoBar">Delete</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% vid.comments.forEach(function(com) { %>
+            <tr>
+              <td class="createdBy"><%= user.name %></td>
+              <td class="comments"><%= com.content %></td>
+              <td class="ratings"><%= com.rating %></td>
+              <td>
+                <% if (com.createdby.equals(user && user._id)) { %>
+                <form
+                  action="/videos/<%= vid._id %>/comments/<%= com._id %>?_method=DELETE"
+                  class="delete-form"
+                  method="POST"
+                >
+                  <button class="deleBtn" type="submit">X</button>
+                </form>
+                <% } else { %>
+                <p>...</p>
+                <% }; %>
+              </td>
+            </tr>
+            <% }); %>
+          </tbody>
+        </table>
+        <% } else { %>
+        <p>^No Comments Yet^</p>
+        <% } %> <% }); %>
+      </div>
+    </main>
+  </body>
 </html>

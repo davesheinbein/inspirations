@@ -1,152 +1,194 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-  <link rel='stylesheet' href='/stylesheets/style.css' />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-  <title> <!-- replace with sqids --></title>
-</head>
-    <body>
-        <header>
-            <nav>
-                <div>
-                    <a class="navBar" id="logoTxt" href="/"><img src="/images/Logo.png" alt="LA" class="logoimg"/><%= title %></a>
-                    <!-- <a class="navBar" href="/"> replace with sqids </a> -->
-                </div>
-                    <ul>
-                        <li><a class="navBar" href="/">Home</a></li>
-                        <li class="divLine">||</li>
-                        <li><a class="navBar" id="active" href="/gifs">Gifs</a></li>
-                        <li class="divLine">||</li>
-                        <li><a class="navBar" href="/videos">Videos</a></li>
-                        <li class="divLine">||</li>
-                        <li><a class="navBar" href="/favorites">Favorites</a></li>
-                    </ul>
-                    <div class="oAuth navBar">
-                      <% if (user) { %>
-                        <a class="navBar" href="/logout"><i class="material-icons left">turned_in</i>Log Out</a>
-                        <% } else { %>
-                        <a class="navBar" href="/auth/google"><i class="material-icons left">turned_in_not</i>Login with Google</a>
-                        <% } %>
-                    </div>
-            </nav>
-        </header>
-  <main>
-        <h1><strong><%= title %></strong>spirations</h1>
-        <br>
-      <!-- Submit -->
-        <form action="/gifs" method="POST">
-            <label id="submitTitle">Submit a Gif</label>
-            <label>Input Gif Title</label>
-                <li><strong>Example: </strong>Cartman Meme</li>
-            <input id="inputForm" type="text" name="title" placeholder="Input Title of Gif">
-            <br>
-            <label>Input Gif URL</label>
-                <li> <strong>Example: </strong>https://media.giphy.com/media/26ufmQSd4DBw0ifU4/giphy.gif</li>
-            <input id="inputForm" type="text" name="src" placeholder="Input Gif URL">
-            <br>
-            <input type="Submit" value="Submit">
-        </form>
-        <br>
-        <h1><%= title %>s</h1>
-        <p> Upload your favorite Gifs!</p>
-        <div class="container">
-            <% gifs.forEach(function(g) { %> 
-                <!-- Gif Title -->
-                <h2><%= g.title %></h2>
-                <!-- Gif -->
-                <img src="<%= g.src %> " alt="<%= g.title %> "/> 
-                <!-- Favorites button -->
-                <% if(user && user.favoriteGifs.includes(g._id)) { %> 
-                    <form id="formBtns" action="/gifs/<%= g._id %>/favorites?_method=DELETE" class="delete-form" method="POST">
-                            <p>Unfavorite</p>
-                            <button class="favBtn" type="submit"><img class="heartImg" src="/images/unfav-heart.png" alt="Heart"></button>
-                    </form>
-                <% } else if(user && !user.favoriteGifs.includes(g._id)) { %> 
-                    <form id="formBtns" action="/gifs/<%= g._id %>/favorites" 
-                        class="favorite-form" method="POST">
-                        <p>Favorite</p>
-                        <button class="favBtn" type="submit"><img class="heartImg" src="/images/fav-heart.png" alt="Heart"></button>
-                    </form>
-                <% }; %> 
-                <!-- To delete button -->
-                    <form id="formBtns" action="/gifs/<%= g._id %>?_method=DELETE"
-                        class="delete-form" method="POST">
-                            <p>Delete</p>
-                            <button class="deleBtn" type="submit">X</button>
-                    </form>
-                <!-- Input comments -->
-                <form id="" method="POST"
-                    action="/gifs/<%= g._id %>/comments">
-                    <label>-Comment-</label>
-                    <textarea name="content"></textarea>
-                    <label>-Rating-</label>
-                    <select name="rating">
-                        <option value="0">Unrated</option>
-                        <option value="1">★</option>
-                        <option value="2">★★</option>
-                        <option value="3">★★★</option>
-                        <option value="4">★★★★</option>
-                        <option selected="selected" value="5">★★★★★</option>
-                    </select>
-                    <input type="submit" value="Add Comment" id="submitBtn">
-                </form>
-                 <!-- Show comments -->
-                 <% if (g.comments.length) { %> 
-                    <table>
-                        <thead>
-                            <tr>
-                                <th class="infoBar">Created By</th>
-                                <th class="infoBar">Comments</th>
-                                <th class="infoBar">Ratings</th>
-                                <th class="infoBar">Delete</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <% g.comments.forEach(function(com) { %> 
-                            <tr>
-                                <td class="createdby"><%= com.createdby.name %></td> 
-                                <td class="comments"><%= com.content %></td>
-                                <td class="ratings"><%= com.rating %></td>
-                                <td>
-                                    <% if (com.createdby.equals(user && user._id)) { %> 
-                                    <form action="/gifs/<%= g._id %>/comments/<%= com._id %>?_method=DELETE"
-                                        class="delete-form" method="POST">
-                                            <button class="deleBtn" type="submit">X</button>
-                                    </form>
-                                    <% } else { %> 
-                                        <p>...</p>
-                                    <% }; %> 
-                                </td>
-                            </tr>
-                            <% }); %> 
-                        </tbody>
-                    </table>
-                    <% } else { %> 
-                        <p>^No Comments Yet^</p>
-                    <% } %> 
-            <% }); %> 
-            <img src="/images/gifs/angelina-jolie.gif" alt="angelina-jolie"/>
-            <img src="/images/gifs/biggie.gif" alt="biggie"/>
-            <img src="/images/gifs/bob-marley.gif" alt="bob-marley"/>
-            <img src="/images/gifs/christopher-walken.gif" alt="christopher-walken"/>
-            <img src="/images/gifs/drake.gif" alt="drake"/>
-            <img src="/images/gifs/islands.gif" alt="islands"/>
-            <img src="/images/gifs/jimi-hendrix.gif" alt="jimi-hendrix"/>
-            <img src="/images/gifs/kaleidoscope-1.gif" alt="kaleidoscope-1"/>
-            <img src="/images/gifs/kaleidoscope-2.gif" alt="kaleidoscope-2"/>
-            <img src="/images/gifs/lil-yachty.gif" alt="lil-yachty"/>
-            <img src="/images/gifs/morgan-freeman.gif" alt="morgan-freeman"/>
-            <img src="/images/gifs/pyramids.gif" alt="pyramids"/>
-            <img src="/images/gifs/ray-charles.gif" alt="ray-charles"/>
-            <img src="/images/gifs/robin-williams.gif" alt="robin-williams"/>
-            <img src="/images/gifs/the-bikers.gif" alt="the-bikers"/>
-            <img src="/images/gifs/tupac.gif" alt="tupac"/>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <title>
+      <!-- replace with sqids -->
+    </title>
+  </head>
+
+  <body>
+    <header>
+      <nav>
+        <div>
+          <a class="navBar" id="logoTxt" href="/"
+            ><img src="/images/Logo.png" alt="LA" class="logoimg" /><%= title
+            %></a
+          >
+          <!-- <a class="navBar" href="/"> replace with sqids </a> -->
         </div>
-  </main>
-</body>
+        <ul>
+          <li><a class="navBar" href="/">Home</a></li>
+          <li class="divLine">||</li>
+          <li><a class="navBar" id="active" href="/gifs">Gifs</a></li>
+          <li class="divLine">||</li>
+          <li><a class="navBar" href="/videos">Videos</a></li>
+          <li class="divLine">||</li>
+          <li><a class="navBar" href="/favorites">Favorites</a></li>
+        </ul>
+        <div class="oAuth navBar">
+          <% if (user) { %>
+          <a class="navBar" href="/logout"
+            ><i class="material-icons left">turned_in</i>Log Out</a
+          >
+          <% } else { %>
+          <a class="navBar" href="/auth/google"
+            ><i class="material-icons left">turned_in_not</i>Login with
+            Google</a
+          >
+          <% } %>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <h1><strong><%= title %></strong>spirations</h1>
+      <br />
+      <!-- Submit -->
+      <form action="/gifs" method="POST">
+        <label id="submitTitle">Submit a Gif</label>
+        <label>Input Gif Title</label>
+        <li><strong>Example: </strong>Cartman Meme</li>
+        <input
+          id="inputForm"
+          type="text"
+          name="title"
+          placeholder="Input Title of Gif"
+        />
+        <br />
+        <label>Input Gif URL</label>
+        <li>
+          <strong>Example: </strong
+          >https://media.giphy.com/media/26ufmQSd4DBw0ifU4/giphy.gif
+        </li>
+        <input
+          id="inputForm"
+          type="text"
+          name="src"
+          placeholder="Input Gif URL"
+        />
+        <br />
+        <input type="Submit" value="Submit" />
+      </form>
+      <br />
+      <h1><%= title %>s</h1>
+      <p>Upload your favorite Gifs!</p>
+      <div class="container">
+        <% gifs.forEach(function(g) { %>
+        <!-- Gif Title -->
+        <h2><%= g.title %></h2>
+        <!-- Gif -->
+        <img src="<%= g.src %> " alt="<%= g.title %> " />
+        <!-- Favorites button -->
+        <% if(user && user.favoriteGifs.includes(g._id)) { %>
+        <form
+          id="formBtns"
+          action="/gifs/<%= g._id %>/favorites?_method=DELETE"
+          class="delete-form"
+          method="POST"
+        >
+          <p>Unfavorite</p>
+          <button class="favBtn" type="submit">
+            <img class="heartImg" src="/images/unfav-heart.png" alt="Heart" />
+          </button>
+        </form>
+        <!-- To delete button -->
+        <form
+          id="formBtns"
+          action="/gifs/<%= g._id %>?_method=DELETE"
+          class="delete-form"
+          method="POST"
+        >
+          <p>Delete</p>
+          <button class="deleBtn" type="submit">X</button>
+        </form>
+        <% } else if(user && !user.favoriteGifs.includes(g._id)) { %>
+        <form
+          id="formBtns"
+          action="/gifs/<%= g._id %>/favorites"
+          class="favorite-form"
+          method="POST"
+        >
+          <p>Favorite</p>
+          <button class="favBtn" type="submit">
+            <img class="heartImg" src="/images/fav-heart.png" alt="Heart" />
+          </button>
+        </form>
+        <!-- To delete button -->
+        <form
+          id="formBtns"
+          action="/gifs/<%= g._id %>?_method=DELETE"
+          class="delete-form"
+          method="POST"
+        >
+          <p>Delete</p>
+          <button class="deleBtn" type="submit">X</button>
+        </form>
+        <% }; %>
+        <!-- Input comments -->
+        <form id="" method="POST" action="/gifs/<%= g._id %>/comments">
+          <label>-Comment-</label>
+          <textarea name="content"></textarea>
+          <label>-Rating-</label>
+          <select name="rating">
+            <option value="0">Unrated</option>
+            <option value="1">★</option>
+            <option value="2">★★</option>
+            <option value="3">★★★</option>
+            <option value="4">★★★★</option>
+            <option selected="selected" value="5">★★★★★</option>
+          </select>
+          <input type="submit" value="Add Comment" id="submitBtn" />
+        </form>
+        <!-- Show comments -->
+        <% if (g.comments.length) { %>
+        <table>
+          <thead>
+            <tr>
+              <th class="infoBar">Created By</th>
+              <th class="infoBar">Comments</th>
+              <th class="infoBar">Ratings</th>
+              <th class="infoBar">Delete</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% g.comments.forEach(function(com) { %>
+            <tr>
+              <td class="createdby"><%= com.createdby.name %></td>
+              <td class="comments"><%= com.content %></td>
+              <td class="ratings"><%= com.rating %></td>
+              <td>
+                <% if (com.createdby.equals(user && user._id)) { %>
+                <form
+                  action="/gifs/<%= g._id %>/comments/<%= com._id %>?_method=DELETE"
+                  class="delete-form"
+                  method="POST"
+                >
+                  <button class="deleBtn" type="submit">X</button>
+                </form>
+                <% } else { %>
+                <p>...</p>
+                <% }; %>
+              </td>
+            </tr>
+            <% }); %>
+          </tbody>
+        </table>
+        <% } else { %>
+        <p>^No Comments Yet^</p>
+        <% } %> <% }); %>
+      </div>
+    </main>
+  </body>
 </html>
