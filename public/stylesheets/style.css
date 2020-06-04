@@ -191,7 +191,7 @@ h2 {
 
 /* heart */
 .heartImg {
-  width: 4rem;
+  width: 2.5rem;
 }
 .favBtn {
   background: none;
@@ -238,6 +238,12 @@ form {
 
 #formBtns {
   flex-direction: row;
+  padding: .5rem 1rem;
+}
+
+form > p {
+  padding: 0 2rem;
+  justify-content: start;
 }
 
 ::placeholder {

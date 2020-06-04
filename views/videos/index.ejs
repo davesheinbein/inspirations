@@ -67,22 +67,22 @@
             <% if(user && user.favoriteVideos.includes(vid._id)) { %> 
                 <form id="formBtns" action="/videos/<%= vid._id %>/favorites?_method=DELETE"
                     class="delete-form" method="POST">
-                        <p>Click to unfavorite</p>
-                        <button class="favBtn" type="submit"><img class="heartImg" src="/images/unfav-heart.png" alt="Heart"></button>
+                    <p>Unfavorite</p>
+                    <button class="favBtn" type="submit"><img class="heartImg" src="/images/unfav-heart.png" alt="Heart"></button>
                 </form>
             <% } else if(user && !user.favoriteVideos.includes(vid._id)) { %>
                 <form id="formBtns" action="/videos/<%= vid._id %>/favorites" 
                     class="favorite-form" method="POST">
-                    <p>Click to favorite</p>
+                    <p>Favorite</p>
                     <button class="favBtn" type="submit"><img class="heartImg" src="/images/fav-heart.png" alt="Heart"></button> 
                 </form>
             <% }; %>  
 
-            <!-- to delete -->
+            <!-- to delete comment -->
             <form id="formBtns" action="/videos/<%= vid._id %>?_method=DELETE"
                 class="delete-form" method="POST">
-                    <p>Click to delete</p>
-                    <button class="deleBtn" type="submit">X</button>
+                <p>Delete</p>
+                <button class="deleBtn" type="submit">X</button>
             </form>
             <!-- Input comments -->
             <form id="" method="POST"
@@ -91,12 +91,12 @@
                 <textarea name="content"></textarea>
             <label>-Rating-</label>
                 <select name="rating">
-                    <option selected="selected" value="Unrated">Unrated</option>
+                    <option value="Unrated">Unrated</option>
                     <option value="1">★</option>
                     <option value="2">★★</option>
                     <option value="3">★★★</option>
                     <option value="4">★★★★</option>
-                    <option value="5">★★★★★</option>
+                    <option selected="selected" value="5">★★★★★</option>
                 </select>
             <input type="submit" value="Add Comment" id="submitBtn">
             </form>
@@ -118,34 +118,52 @@
                             <td class="comments"><%= com.content %></td>
                             <td class="ratings"><%= com.rating %></td>
                             <td>
-                                <form action="/comments/<%= com._id %>?_method=DELETE"
+                                <% if (com.createdby.equals(user && user._id)) { %> 
+                                <form action="/videos/<%= vid._id %>/comments/<%= com._id %>?_method=DELETE"
                                     class="delete-form" method="POST">
                                         <button class="deleBtn" type="submit">X</button>
                                 </form>
+                                <% } else { %> 
+                                    <p>...</p>
+                                <% }; %> 
                             </td>
                         </tr>
                         <% }); %> 
                     </tbody>
                 </table>
                 <% } else { %> 
-                    <p>No Comments Yet</p>
+                    <p>^No Comments Yet^</p>
                 <% } %> 
             <% }); %> 
-
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/-SRlNYNTFqA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/QgOM3mJJexM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/IQ3Bs_bm6P8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/fR7VyhSfr-c" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/0U134VpOyn4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/O5RdMvgk8b0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/qjBUgXiNc3g" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/xfnGAaZFkGU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/D5nDgGb27-s" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/lqZWM7n8Gj8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/LcSKrOlnofk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/4wFO1Qqi3nQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/o9KdvcsSYk0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/Q0hXG_RA7vc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <h1>Static Videos</h1>
+                <h2>Funny Tupac Moments</h2>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/-SRlNYNTFqA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <h2>10 Unforgetable Jimi Hendrix Moments</h2>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/QgOM3mJJexM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <h2>Biking Fails</h2>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/IQ3Bs_bm6P8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <h2>Best Christopher Walken Interviews</h2>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/fR7VyhSfr-c" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <h2>Drake Being Hilarious</h2>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/0U134VpOyn4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <h2>Electric Sheep</h2>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/O5RdMvgk8b0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <h2>Best Bob Marley Moments</h2>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/qjBUgXiNc3g" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <h2>Best of Lil Yachty</h2>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/xfnGAaZFkGU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <h2>Biggie making an Appearance</h2>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/D5nDgGb27-s" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <h2>Morgan Freeman Funny Narration</h2>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/lqZWM7n8Gj8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <h2>Best Robin Williams Interviews</h2>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/LcSKrOlnofk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <h2>Most Beautiful Islands in the World</h2>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/4wFO1Qqi3nQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <h2>Best Angelina Jolie Performances</h2>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/o9KdvcsSYk0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <h2>Climbing the Pyramids</h2>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/Q0hXG_RA7vc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
 </main>
 </body>

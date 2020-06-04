@@ -16,10 +16,12 @@ function index(req, res) {
   if(req.user) {
     user = req.user
   }
-    User.find({}, function(err, favorites) {
+    User.findById(req.user._id)
+    .populate('favoriteVideos')
+    .populate('favoriteGifs') 
+    .exec(function(err, user){
       res.render('favorites/index', 
       {
-        favorites, 
         title: 'spirations', 
         user
       });

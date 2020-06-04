@@ -63,20 +63,20 @@
                 <!-- Favorites button -->
                 <% if(user && user.favoriteGifs.includes(g._id)) { %> 
                     <form id="formBtns" action="/gifs/<%= g._id %>/favorites?_method=DELETE" class="delete-form" method="POST">
-                            <p>Click to unfavorite</p>
+                            <p>Unfavorite</p>
                             <button class="favBtn" type="submit"><img class="heartImg" src="/images/unfav-heart.png" alt="Heart"></button>
                     </form>
                 <% } else if(user && !user.favoriteGifs.includes(g._id)) { %> 
                     <form id="formBtns" action="/gifs/<%= g._id %>/favorites" 
                         class="favorite-form" method="POST">
-                        <p>Click to favorite</p>
+                        <p>Favorite</p>
                         <button class="favBtn" type="submit"><img class="heartImg" src="/images/fav-heart.png" alt="Heart"></button>
                     </form>
                 <% }; %> 
                 <!-- To delete button -->
                     <form id="formBtns" action="/gifs/<%= g._id %>?_method=DELETE"
                         class="delete-form" method="POST">
-                            <p>Click to delete</p>
+                            <p>Delete</p>
                             <button class="deleBtn" type="submit">X</button>
                     </form>
                 <!-- Input comments -->
@@ -86,12 +86,12 @@
                     <textarea name="content"></textarea>
                     <label>-Rating-</label>
                     <select name="rating">
-                        <option selected="selected" value="0">Unrated</option>
+                        <option value="0">Unrated</option>
                         <option value="1">★</option>
                         <option value="2">★★</option>
                         <option value="3">★★★</option>
                         <option value="4">★★★★</option>
-                        <option value="5">★★★★★</option>
+                        <option selected="selected" value="5">★★★★★</option>
                     </select>
                     <input type="submit" value="Add Comment" id="submitBtn">
                 </form>
@@ -113,17 +113,21 @@
                                 <td class="comments"><%= com.content %></td>
                                 <td class="ratings"><%= com.rating %></td>
                                 <td>
-                                    <form action="/comments/<%= com._id %>?_method=DELETE"
+                                    <% if (com.createdby.equals(user && user._id)) { %> 
+                                    <form action="/gifs/<%= g._id %>/comments/<%= com._id %>?_method=DELETE"
                                         class="delete-form" method="POST">
                                             <button class="deleBtn" type="submit">X</button>
                                     </form>
+                                    <% } else { %> 
+                                        <p>...</p>
+                                    <% }; %> 
                                 </td>
                             </tr>
                             <% }); %> 
                         </tbody>
                     </table>
                     <% } else { %> 
-                        <p>No Comments Yet</p>
+                        <p>^No Comments Yet^</p>
                     <% } %> 
             <% }); %> 
             <img src="/images/gifs/angelina-jolie.gif" alt="angelina-jolie"/>

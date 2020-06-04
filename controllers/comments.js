@@ -6,6 +6,7 @@ module.exports = {
     createGifComment,
     deleteGifComment,
     createVidComment,
+    deleteVidComment
 };
 
 
@@ -43,6 +44,21 @@ function createVidComment(req, res) {
         video.comments.push(req.body); 
         video.save(function(err, video){
             res.redirect(`/videos`);
+        });
+    });
+}
+
+function deleteVidComment(req, res) {
+    Video.findOne({'comments._id': req.params.id}, function(err, video) {
+        // The embedding lesson has this in the further study section
+        // Find the comment subdoc
+        const comment = video.comments.id(req.params.id);
+        // Remove the comment subdoc from the array
+        comment.remove();
+        // Save the gif doc
+        video.save(function(err) {
+          // Redirect back to show page of gif
+        res.redirect(`/videos`);
         });
     });
 }
