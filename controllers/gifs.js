@@ -11,7 +11,7 @@ module.exports = {
 
 function index(req, res, next) {
     Gif.find({})
-    .populate('comments')
+    .populate('comments comments.createdby')
     .exec(function(err, gifs) {
       if (err) return next(err);
       // Passing search values, name & sortKey, for use in the EJS

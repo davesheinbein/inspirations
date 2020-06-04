@@ -9,23 +9,48 @@ module.exports = {
   delVid
 };
 
-function index(req, res) {
-  let user = null
-  if(req.user) {
-    user = req.user
-  }
-    Video.find({}, function(err, videos) {
-      res.render('videos/index', 
-      {
-        videos, 
-        title: 'Video', 
-        user
-      });
-    });
-}
+// function index(req, res) {
+//   let user = null
+//   if(req.user) {
+//     user = req.user
+//   }
+//     Video.find({}, function(err, videos) {
+//       res.render('videos/index', 
+//       {
+//         videos, 
+//         title: 'Video', 
+//         user
+//       });
+//     });
+// }
 
+function index(req, res) {
+    let user = null
+    if(req.user) {
+      user = req.user
+    }
+      Video.find().populate('comments').exec(function(err, videos){
+        res.render('videos/index', 
+        {
+          videos, 
+          title: 'Vid', 
+          user
+        });
+      });
+}
+// works
 function create(req, res) {
-  console.log(req.body);
+  function getId(url) {
+    const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
+    const match = url.match(regExp);
+    return (match && match[2].length === 11)
+      ? match[2]
+      : null;
+}
+console.log(req.body);
+const videoId = getId(req.body.src)
+req.body.src = `//www.youtube.com/embed/${videoId}`
+console.log(req.body);
   Video.create(req.body);
     res.redirect('/videos');
 }

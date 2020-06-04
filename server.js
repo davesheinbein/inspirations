@@ -45,7 +45,7 @@ app.use(passport.session());
 app.use('/', indexRouter);
 app.use('/gifs', gifsRouter);
 app.use('/videos', videosRouter);
-app.use('/favorites', favoritesRouter);
+app.use('/', favoritesRouter);
 app.use('/', commentsRouter);
 
 // catch 404 and forward to error handler

@@ -12,17 +12,13 @@ const commentsSchema = new Schema({
         min: 0, 
         max: 5, 
         default: 5
-    }
+    },
 }, {timestamps: true});
 
 
 const gifSchema = new Schema({
     title: String,
     src: String,
-    // favorite: {
-    //     type: Boolean,
-    //     default: false
-    // },
     comments: [commentsSchema],
 }, {timestamps: true});
 

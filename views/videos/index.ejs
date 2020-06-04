@@ -14,7 +14,7 @@
         <header>
             <nav>
                 <div>
-                    <a class="navBar" id="logoTxt" href="/"><img src="/images/Logo.png" alt="LA" class="logoimg"/><%= title %></a>
+                    <a class="navBar" id="logoTxt" href="/"><img src="/images/Logo.png" alt="LA" class="logoimg"/><%= title %>spirations</a>
                 </div>
                     <ul>
                         <li><a class="navBar" href="/">Home</a></li>
@@ -43,11 +43,11 @@
             <li> <strong>Example: </strong>Lofi Hip Hop Radio</li>
         <input id="inputForm"  type="text" name="title" placeholder="Title of Video">
         <br>
-        <label>Input Video Url</label>
-            <ul>Make sure to include a link with embed in it!</ul>
+        <label>Input Youtube Video Url</label>
+            <!-- <ul>Make sure to include a link with embed in it!</ul>
                 <li> <strong>1. </strong>Click share button on youtube or vimeo</li>
                 <li><strong>2. </strong>Click on embed button to view Url</li>
-                <li><strong>3. </strong>Copy link within the quotes " " following src=</li>
+                <li><strong>3. </strong>Copy link within the quotes " " following src=</li> -->
                 <li><strong>Example: </strong>https://www.youtube.com/embed/ifn0u1kwgOk </li>
         <input id="inputForm" type="text" name="src" placeholder="Url link to video" >
         <br>
@@ -62,12 +62,22 @@
             <h2><%= vid.title %></h2>
             <!-- Video -->
             <iframe width="560" height="315" src="<%= vid.src %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            <iframe width="560" height="315" <%= vid.src %> frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+            <!-- Favorites button -->
+            <form id="formBtns" action="/videos/<%= vid._id %>?_method=POST" 
+                class="favorite-form" method="POST">
+                <p>Click to favorite</p>
+                <button class="favBtn" type="submit"><img class="heartImg" src="/images/fav-heart.png" alt="Heart"></button> <!-- add heart -->
+            </form>
+            <!-- to delete -->
+            <form id="formBtns" action="/videos/<%= vid._id %>?_method=DELETE"
+                class="delete-form" method="POST">
+                    <p>Click to delete</p>
+                    <button class="deleBtn" type="submit">X</button>
+            </form>
             <!-- Input comments -->
             <form id="" method="POST"
-                action="/gifs/<%= vid._id %>/comments">
-            <label>-Created By-</label>
-                <input id="createdByInput" name="User"></input>
+                action="/videos/<%= vid._id %>/comments">
             <label>-Comment-</label>
                 <textarea name="content"></textarea>
             <label>-Rating-</label>
@@ -82,30 +92,36 @@
             <input type="submit" value="Add Comment" id="submitBtn">
             </form>
             <!-- Show comments -->
-            <tr>
-                <td class="createdBy"><%= vid.createdby %></td>
-                <td class="comments"><%= vid.content %></td>
-                <td class="ratings"><%= vid.rating %></td>
-                <td>
-                    <form action="/comments/<%= vid._id %>?_method=DELETE"
-                        class="delete-form" method="POST">
-                            <button class="deleBtn" type="submit">X</button>
-                    </form>
-                </td>
-            </tr>
-            <!-- Favorites button -->
-            <form id="formBtns" action="/videos/<%= vid._id %>?_method=POST" 
-                class="favorite-form" method="POST">
-                <p>Click to favorite</p>
-                <button class="favBtn" type="submit"><img class="heartImg" src="/images/fav-heart.png" alt="Heart"></button> <!-- add heart -->
-            </form>
-            <!-- to delete -->
-            <form id="formBtns" action="/videos/<%= vid._id %>?_method=DELETE"
-                class="delete-form" method="POST">
-                    <p>Click to delete</p>
-                    <button class="deleBtn" type="submit">X</button>
-            </form>
-        <% }); %> 
+            <% if (vid.comments.length) { %> 
+                <table>
+                    <thead>
+                        <tr>
+                            <th class="infoBar">Created By</th>
+                            <th class="infoBar">Comments</th>
+                            <th class="infoBar">Ratings</th>
+                            <th class="infoBar">Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% vid.comments.forEach(function(com) { %> 
+                        <tr>
+                            <td class="createdBy"><%= user.name %></td>
+                            <td class="comments"><%= com.content %></td>
+                            <td class="ratings"><%= com.rating %></td>
+                            <td>
+                                <form action="/comments/<%= com._id %>?_method=DELETE"
+                                    class="delete-form" method="POST">
+                                        <button class="deleBtn" type="submit">X</button>
+                                </form>
+                            </td>
+                        </tr>
+                        <% }); %> 
+                    </tbody>
+                </table>
+                <% } else { %> 
+                    <h2>No Comments Yet</h2>
+                <% } %> 
+            <% }); %> 
 
         <iframe width="560" height="315" src="https://www.youtube.com/embed/-SRlNYNTFqA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         <iframe width="560" height="315" src="https://www.youtube.com/embed/QgOM3mJJexM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>

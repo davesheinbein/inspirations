@@ -60,6 +60,25 @@
                 <h2><%= g.title %></h2>
                 <!-- Gif -->
                 <img src="<%= g.src %> " alt="<%= g.title %> "/> 
+                <!-- Favorites button -->
+                <% if(user && user.favoriteGifs.includes(g._id)) { %> 
+                    <form id="formBtns" action="/gifs/<%= g._id %>/favorites?_method=DELETE"
+                        class="delete-form" method="POST">
+                            <button class="favBtn" type="submit"><img class="heartImg" src="/images/fav-heart.png" alt="Heart"></button>
+                    </form>
+                    <p>This Gif is favorited</p>
+                <% } else if(user && !user.favoriteGifs.includes(g._id)) { %> 
+                    <form id="formBtns" action="/gifs/<%= g._id %>/favorites" class="favorite-form" method="POST">
+                        <p>Click to favorite</p>
+                        <button class="favBtn" type="submit"><img class="heartImg" src="/images/fav-heart.png" alt="Heart"></button> <!-- add heart -->
+                    </form>
+                <% }; %> 
+                <!-- To delete button -->
+                    <form id="formBtns" action="/gifs/<%= g._id %>?_method=DELETE"
+                        class="delete-form" method="POST">
+                            <p>Click to delete</p>
+                            <button class="deleBtn" type="submit">X</button>
+                    </form>
                 <!-- Input comments -->
                 <form id="" method="POST"
                     action="/gifs/<%= g._id %>/comments">
@@ -81,16 +100,16 @@
                     <table>
                         <thead>
                             <tr>
-                                <th class="infoBar">Created By:</th>
+                                <th class="infoBar">Created By</th>
                                 <th class="infoBar">Comments</th>
                                 <th class="infoBar">Ratings</th>
+                                <th class="infoBar">Delete</th>
                             </tr>
                         </thead>
                         <tbody>
                             <% g.comments.forEach(function(com) { %> 
                             <tr>
-                                <td><%= user.name %></td> <!-- insert user name --> <!-- If include this will require that you are loggedin to view -->
-                                <td class="createdBy"><%= com.createdby %></td>
+                                <td class="createdby"><%= com.createdby.name %></td> 
                                 <td class="comments"><%= com.content %></td>
                                 <td class="ratings"><%= com.rating %></td>
                                 <td>
@@ -103,23 +122,9 @@
                             <% }); %> 
                         </tbody>
                     </table>
-                <% } else { %> 
-                    <h2>No Comments Yet</h2>
-                <% } %> 
-                <% }); %> 
-                <!-- Favorites button -->
-            <% gifs.forEach(function(g) { %> 
-                <form id="formBtns" action="/gifs/<%= g._id %>?_method=POST" 
-                    class="favorite-form" method="POST">
-                    <p>Click to favorite</p>
-                    <button class="favBtn" type="submit"><img class="heartImg" src="/images/fav-heart.png" alt="Heart"></button> <!-- add heart -->
-                </form>
-                <!-- to delete -->
-                <form id="formBtns" action="/gifs/<%= g._id %>?_method=DELETE"
-                    class="delete-form" method="POST">
-                        <p>Click to delete</p>
-                        <button class="deleBtn" type="submit">X</button>
-                </form>
+                    <% } else { %> 
+                        <h2>No Comments Yet</h2>
+                    <% } %> 
             <% }); %> 
             <img src="/images/gifs/angelina-jolie.gif" alt="angelina-jolie"/>
             <img src="/images/gifs/biggie.gif" alt="biggie"/>

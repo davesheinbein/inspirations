@@ -4,35 +4,45 @@ const comment= require('../models/user')
 
 module.exports = {
     createGifComment,
-    // deleteGifComment
+    deleteGifComment,
+    createVidComment,
 };
 
 
-
+// Gifs
 function createGifComment(req, res) {
     req.body.createdby = req.user._id
     Gif.findById(req.params.id, function(err, gif){
-        gif.comments.push(req.body); // Add t he comment to the comments array
+        gif.comments.push(req.body); // Add the comment to the comments array
         gif.save(function(err, gif){
             res.redirect(`/gifs`);
         });
     });
 }
 
-
-// // new
-// function deleteGifComment(req, res) {
-//     Gif.findOne({'comments._id': req.params.id}, function(err, gif) {
-//         // The embedding lesson has this in the further study section
-//         // Find the comment subdoc
-//         const comment = gif.comments.id(req.params.id);
-//         // Remove the comment subdoc from the array
-//         comment.remove();
-//         // Save the gif doc
-//         gif.save(function(err) {
-//           // Redirect back to show page of gif
-//         res.redirect(`/gifs/${gif._id}`);
-//         });
-//     });
-// }
+function deleteGifComment(req, res) {
+    Gif.findOne({'comments._id': req.params.id}, function(err, gif) {
+        // The embedding lesson has this in the further study section
+        // Find the comment subdoc
+        const comment = gif.comments.id(req.params.id);
+        // Remove the comment subdoc from the array
+        comment.remove();
+        // Save the gif doc
+        gif.save(function(err) {
+          // Redirect back to show page of gif
+        res.redirect(`/gifs`);
+        });
+    });
+}
 // ^^^^^^
+
+// videos
+function createVidComment(req, res) {
+    req.body.createdby = req.user._id
+    Video.findById(req.params.id, function(err, video){
+        video.comments.push(req.body); 
+        video.save(function(err, video){
+            res.redirect(`/videos`);
+        });
+    });
+}

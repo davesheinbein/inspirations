@@ -6,8 +6,17 @@ router.get('/', videosCtrl.index)
 
 router.get('/new', videosCtrl.newVid)
 
-router.post('/', videosCtrl.create)
+router.post('/', isLoggedIn, videosCtrl.create)
 
-router.delete("/:id", videosCtrl.delVid)
+router.delete("/:id", isLoggedIn, videosCtrl.delVid)
 
+
+function isLoggedIn(req, res, next) {
+    if (req.isAuthenticated()) {
+        return next();
+    } else {
+        res.redirect('/auth/google')
+    }
+}
+  
 module.exports = router;

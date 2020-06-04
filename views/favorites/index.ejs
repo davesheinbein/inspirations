@@ -8,13 +8,13 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
   <link rel='stylesheet' href='/stylesheets/style.css' />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-  <title> <!-- replace with sqids --></title>
+  <title>Fav<%= title %></title>
 </head>
     <body>
         <header>
             <nav>
                 <div>
-                    <a class="navBar" id="logoTxt" href="/"><img src="/images/Logo.png" alt="LA" class="logoimg"/>Favorites<%= title %></a>
+                    <a class="navBar" id="logoTxt" href="/"><img src="/images/Logo.png" alt="LA" class="logoimg"/>Fav<%= title %></a>
                     <!-- <a class="navBar" href="/"> replace with sqids </a> -->
                 </div>
                     <ul>
@@ -36,17 +36,17 @@
             </nav>
         </header>
   <main>
-    <h1><strong>Favorites</strong><%= title %></h1>
+    <h1><strong>Fav</strong><%= title %></h1>
     <h1>Gifs <!-- replace with sqids --></h1>
     <p> View your favorite Gifs!</p>
     <div class="container">
         <%# gifs.forEach(function(g) { %> 
             <img src="<%# g.src %> " alt="<%# g.title %> "/> 
             <!-- to delete -->
-            <form action="/gifs/<%# g._id %>?_method=DELETE"
-                class="delete-form" method="POST">
-                    <p>Click the X to delete</p>
-                    <button class="deleBtn" type="submit">X</button>
+            <form id="formBtns" action="/gifs/<%# g._id %>?_method=POST" 
+                class="favorite-form" method="POST">
+                <p>Click to favorite</p>
+                <button class="favBtn" type="submit"><img class="heartImg" src="/images/fav-heart.png" alt="Heart"></button> <!-- add heart -->
             </form>
         <%# }); %> 
     <h1>Videos <!-- replace with sqids --></h1>
@@ -55,9 +55,9 @@
         <%# videos.forEach(function(vid) { %>
         <iframe width="560" height="315" src="<%# vid.src %> " frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         <!-- to delete -->
-        <form action="/videos/<%# vid._id %>?_method=DELETE"
-            class="delete-form" method="POST">
-                <p>Click the X to delete</p>
-                <button class="deleBtn" type="submit">X</button>
+        <form id="formBtns" action="/videos/<%# g._id %>?_method=POST" 
+            class="favorite-form" method="POST">
+            <p>Click to favorite</p>
+            <button class="favBtn" type="submit"><img class="heartImg" src="/images/fav-heart.png" alt="Heart"></button> <!-- add heart -->
         </form>
         <%# }); %> 
