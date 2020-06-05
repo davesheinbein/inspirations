@@ -34,9 +34,11 @@ function create(req, res) {
   // console.log(req.body);
   const videoId = getId(req.body.src);
   req.body.src = `//www.youtube.com/embed/${videoId}`;
+  req.body.createdby = req.user._id;
   // console.log(req.body);
-  Video.create(req.body);
-  res.redirect("/videos");
+  Video.create(req.body, function (err, video) {
+    res.redirect("/videos");
+  });
 }
 
 function show(req, res) {

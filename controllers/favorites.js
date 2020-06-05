@@ -16,15 +16,25 @@ function index(req, res) {
   if (req.user) {
     user = req.user;
   }
-  User.findById(req.params.id)
-    .populate("favoriteVideos")
-    .populate("favoriteGifs")
-    .exec(function (err, user) {
-      res.render("favorites/index", {
-        title: "spirations",
-        user,
+  // console.log(req.user, "req");
+  if (user) {
+    User.findById(user._id)
+      .populate("favoriteVideos")
+      .populate("favoriteGifs")
+      .exec(function (err, user) {
+        // console.log(user, "user");
+
+        res.render("favorites/index", {
+          title: "spirations",
+          user,
+        });
       });
+  } else {
+    res.render("favorites/index", {
+      title: "spirations",
+      user: false
     });
+  }
 }
 
 // Gifs

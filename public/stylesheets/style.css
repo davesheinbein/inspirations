@@ -28,6 +28,10 @@ header {
   height: 4.6rem;
 }
 
+.logoNavStuff {
+  display: flex;
+}
+
 .logoimg {
   height: 4rem;
 }
