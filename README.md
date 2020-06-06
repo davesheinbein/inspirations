@@ -33,17 +33,6 @@ You are also able to favorite gifs & videos. Your favorites will show up on the 
 
 [Favorites Page Sceenshot](https://imgur.com/mcYJwv2)
 
-
-test 
-1. ![](/public/images/wireframe-previews/screenshots/homepage-screenshot.png?raw=true)
-2. ![](public/images/wireframe-previews/screenshots/homepage-screenshot.png?raw=true)
-3. ![](/images/wireframe-previews/screenshots/homepage-screenshot.png?raw=true)
-4. ![](images/wireframe-previews/screenshots/homepage-screenshot.png?raw=true)
-5. ![](./images/wireframe-previews/screenshots/homepage-screenshot.png?raw=true)
-6. ![](../images/wireframe-previews/screenshots/homepage-screenshot.png?raw=true)
-7. ![](../../wireframe-previews/screenshots/homepage-screenshot.png?raw=true)
-8. ![](../../../wireframe-previews/screenshots/homepage-screenshot.png?raw=true)
-
 ## Technologies Used: 
 
 #### 1. HTML
@@ -57,11 +46,12 @@ test
 
 
 ### Click the link to view the website
+[Inspirations Webstite](https://inspirations-website.herokuapp.com/) 
+
+### Click the link to view the Trello Board
 [Trello Board](https://trello.com/b/Mq3Qp8RD)
 
-![ERD](wireframe-previews/erd/ga-project-2.png)
-
-[Inspirations Webstite](https://inspirations-website.herokuapp.com/) 
+![ERD](screenshots/erd.wireframe-previews/erd/ga-project-2.png)
 
 ## Potential Next Steps: 
 
