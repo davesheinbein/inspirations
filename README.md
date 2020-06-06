@@ -49,3 +49,4 @@
 
 ##### - [x] Add some animation
 ##### - [] Add API
+##### - [] Update Css for media queries
