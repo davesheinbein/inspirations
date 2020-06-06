@@ -23,14 +23,14 @@
 
 
 test 
-1. (/public/images/wireframe-previews/screenshots/homepage-screenshot.png)
-2. (public/images/wireframe-previews/screenshots/homepage-screenshot.png)
-3. (/images/wireframe-previews/screenshots/homepage-screenshot.png)
-4. (images/wireframe-previews/screenshots/homepage-screenshot.png)
-5. (./images/wireframe-previews/screenshots/homepage-screenshot.png)
-6. (../images/wireframe-previews/screenshots/homepage-screenshot.png)
-7. (../../wireframe-previews/screenshots/homepage-screenshot.png)
-8. (../../../wireframe-previews/screenshots/homepage-screenshot.png)
+1. !(/public/images/wireframe-previews/screenshots/homepage-screenshot.png)
+2. !(public/images/wireframe-previews/screenshots/homepage-screenshot.png)
+3. !(/images/wireframe-previews/screenshots/homepage-screenshot.png)
+4. !(images/wireframe-previews/screenshots/homepage-screenshot.png)
+5. !(./images/wireframe-previews/screenshots/homepage-screenshot.png)
+6. !(../images/wireframe-previews/screenshots/homepage-screenshot.png)
+7. !(../../wireframe-previews/screenshots/homepage-screenshot.png)
+8. !(../../../wireframe-previews/screenshots/homepage-screenshot.png)
 
 ## Technologies Used: 
 
