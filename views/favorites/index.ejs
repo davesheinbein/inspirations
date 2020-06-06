@@ -114,44 +114,46 @@
       </form>
     </div>
     <% if (vid.comments.length) { %>
-    <table>
-      <thead>
-        <tr>
-          <th class="infoBar">Created By</th>
-          <th class="infoBar">Comments</th>
-          <th class="infoBar">Ratings</th>
-          <th class="infoBar">Delete</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% vid.comments.forEach(function(com) { %>
-        <tr>
-          <td class="createdBy"><%= user.name %></td>
-          <td class="comments"><%= com.content %></td>
-          <td class="ratings"><%= com.rating %></td>
-          <td>
-            <form action="/videos/<%= vid._id %>/comments/<%= com._id %>?_method=DELETE" class="delete-form"
-              method="POST">
-              <button class="deleBtn" type="submit">X</button>
+    <div class="subContainer">
+      <table>
+        <thead>
+          <tr>
+            <th class="infoBar">Created By</th>
+            <th class="infoBar">Comments</th>
+            <th class="infoBar">Ratings</th>
+            <th class="infoBar">Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% vid.comments.forEach(function(com) { %>
+          <tr>
+            <td class="createdBy"><%= user.name %></td>
+            <td class="comments"><%= com.content %></td>
+            <td class="ratings"><%= com.rating %></td>
+            <td>
+              <form action="/videos/<%= vid._id %>/comments/<%= com._id %>?_method=DELETE" class="delete-form"
+                method="POST">
+                <button class="deleBtn" type="submit">X</button>
+              </form>
+            </td>
+          </tr>
+        </tbody>
+        <thead>
+          <th colspan="4">Edit Comment</th>
+        </thead>
+        <tbody>
+          <td colspan="4" class="editComTh">
+            <!-- Edit Comments -->
+            <form action="/videos/<%= vid._id %>/comments/<%=com._id %>?_method=PUT" class="formSpec" method="POST"
+              autocomplete="off">
+              <input id="updateInput" type="text" name="content" value="<% vid.comments %>" />
+              <button type="submit">Update</button>
             </form>
           </td>
-        </tr>
-      </tbody>
-      <thead>
-        <th colspan="4">Edit Comment</th>
-      </thead>
-      <tbody>
-        <td colspan="4" class="editComTh">
-          <!-- Edit Comments -->
-          <form action="/videos/<%= vid._id %>/comments/<%=com._id %>?_method=PUT" class="formSpec" method="POST"
-            autocomplete="off">
-            <input id="updateInput" type="text" name="content" value="<% vid.comments %>" />
-            <button type="submit">Update</button>
-          </form>
-        </td>
-      </tbody>
-      <% }); %>
-    </table>
+        </tbody>
+        <% }); %>
+      </table>
+    </div>
     <% } else { %>
     <p>^No Comments Yet^</p>
     <% } %>
