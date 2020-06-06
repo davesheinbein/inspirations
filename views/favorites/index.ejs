@@ -112,7 +112,6 @@
           <th class="infoBar">Comments</th>
           <th class="infoBar">Ratings</th>
           <th class="infoBar">Delete</th>
-          <th class="infoBar">Edit</th>
         </tr>
       </thead>
       <tbody>
@@ -127,17 +126,22 @@
               <button class="deleBtn" type="submit">X</button>
             </form>
           </td>
-          <td>
-            <!-- Edit Comments -->
-            <form action="/videos/<%= vid._id %>/comments/<%=com._id %>?_method=PUT" class="formSpec" method="POST"
-              autocomplete="off">
-              <input id="updateInput" type="text" name="content" value="<% vid.comments %>" />
-              <button type="submit">Update</button>
-            </form>
-          </td>
         </tr>
-        <% }); %>
       </tbody>
+      <thead>
+        <th colspan="4">Edit Comment</th>
+      </thead>
+      <tbody>
+        <td>
+          <!-- Edit Comments -->
+          <form action="/videos/<%= vid._id %>/comments/<%=com._id %>?_method=PUT" class="formSpec" method="POST"
+            autocomplete="off">
+            <input id="updateInput" type="text" name="content" value="<% vid.comments %>" />
+            <button type="submit">Update</button>
+          </form>
+        </td>
+      </tbody>
+      <% }); %>
     </table>
     <% } else { %>
     <p>^No Comments Yet^</p>

@@ -1,8 +1,10 @@
- App Title: Contains a description of what the app does and optional background info.
+# **Inspirations Website**
 
- # **Inspirations Website**
+This website showcase RESTful routes, CRUD functionality, and OAuth login requirements. 
 
-☐ Screenshot(s): A screenshot of your app's landing page and any other screenshots of interest.
+The websites allow people to post gifs or videos. People can add comments and ratings to each creative. You can also update or delete comments as long as you are the user that posted those comments.
+
+You are also able to favorite gifs & videos. Your favorites will show up on the favorites page. You can remove creatives from your favorites by clicking the unfavorites button.
 
 ## Screenshot:
 
@@ -44,18 +46,13 @@ test
 #### 8. Heroku
 
 
-
-☐ Getting Started: Include a link to the deployed app and your Trello board with the project's planning.
-
 ### Click the link to view the website
 [Trello Board](https://trello.com/b/Mq3Qp8RD)
 
 ![ERD](wireframe-previews/erd/ga-project-2.png)
 
-[Inspirations Webstite]() 
+[Inspirations Webstite](https://inspirations-website.herokuapp.com/) 
 
-
-☐ Next Steps: Planned future enhancements (icebox items).
 ## Potential Next Steps: 
 
 ##### - [x] Add some animation
