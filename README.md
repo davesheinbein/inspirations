@@ -9,7 +9,7 @@ You are also able to favorite gifs & videos. Your favorites will show up on the 
 ## Screenshot:
 
 ### Home Page Sceenshot
-![Home Page Sceenshot](https://imgur.com/YCEiEr5)
+[Home Page Sceenshot](https://imgur.com/YCEiEr5)
 
 ### Gifs Page Sceenshot
 ![Gifs Page Sceenshot](hhttps://imgur.com/T8Fbx9X)
