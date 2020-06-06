@@ -15,7 +15,10 @@
 ### Videos Page Sceenshot
 ![Videos Page Sceenshot]()
 
-### Favorites Page Sceenshot
+### Favorites Page (Not Logged-in) Sceenshot
+![Favorites Page Sceenshot]()
+
+### Favorites Page (Logged-in) Sceenshot
 ![Favorites Page Sceenshot]()
 
 ☐ Technologies Used: List of the technologies used.
