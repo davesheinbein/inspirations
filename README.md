@@ -9,30 +9,30 @@ You are also able to favorite gifs & videos. Your favorites will show up on the 
 ## Screenshot:
 
 ### Home Page Sceenshot
-![Home Page Sceenshot](/public/images/wireframe-previews/screenshots/homepage-screenshot.png)
+![Home Page Sceenshot](https://imgur.com/YCEiEr5)
 
 ### Gifs Page Sceenshot
-![Gifs Page Sceenshot](images/wireframe-previews/screenshots/gifs-screenshot.png)
+![Gifs Page Sceenshot](hhttps://imgur.com/T8Fbx9X)
 
 ### Videos Page Sceenshot
-![Videos Page Sceenshot](../images/wireframe-previews/screenshots/gifs-screenshot.png)
+![Videos Page Sceenshot](https://imgur.com/GHruBC2)
 
 ### Favorites Page (Not Logged-in) Sceenshot
-![Favorites Page Sceenshot](../public/images/wireframe-previews/screenshots/gifs-screenshot.png)
+![Favorites Page Sceenshot](https://imgur.com/W0WcoUq)
 
 ### Favorites Page (Logged-in) Sceenshot
-![Favorites Page Sceenshot](public/images/wireframe-previews/screenshots/homepage-screenshot.png)
+![Favorites Page Sceenshot](https://imgur.com/mcYJwv2)
 
 
 test 
-1. ![](/public/images/wireframe-previews/screenshots/homepage-screenshot.png)
-2. ![](public/images/wireframe-previews/screenshots/homepage-screenshot.png)
-3. ![](/images/wireframe-previews/screenshots/homepage-screenshot.png)
-4. ![](images/wireframe-previews/screenshots/homepage-screenshot.png)
-5. ![](./images/wireframe-previews/screenshots/homepage-screenshot.png)
-6. ![](../images/wireframe-previews/screenshots/homepage-screenshot.png)
-7. ![](../../wireframe-previews/screenshots/homepage-screenshot.png)
-8. ![](../../../wireframe-previews/screenshots/homepage-screenshot.png)
+1. ![](/public/images/wireframe-previews/screenshots/homepage-screenshot.png?raw=true)
+2. ![](public/images/wireframe-previews/screenshots/homepage-screenshot.png?raw=true)
+3. ![](/images/wireframe-previews/screenshots/homepage-screenshot.png?raw=true)
+4. ![](images/wireframe-previews/screenshots/homepage-screenshot.png?raw=true)
+5. ![](./images/wireframe-previews/screenshots/homepage-screenshot.png?raw=true)
+6. ![](../images/wireframe-previews/screenshots/homepage-screenshot.png?raw=true)
+7. ![](../../wireframe-previews/screenshots/homepage-screenshot.png?raw=true)
+8. ![](../../../wireframe-previews/screenshots/homepage-screenshot.png?raw=true)
 
 ## Technologies Used: 
 
