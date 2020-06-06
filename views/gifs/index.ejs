@@ -3,8 +3,8 @@
 <header>
   <nav>
     <div class="logoNavStuff">
-      <a class="navBar" id="logoTxt" href="/"><img src="/images/Logo.png" alt="LA" class="logoimg" /><%= title
-          %>spirations</a>
+      <a class="navBar" href="/"><img src="/images/Logo.png" alt="LA" class="logoimg" /></a>
+      <button class="logoTxt" href="/"><%= title %>spirations</button>
       <!-- <a class="navBar" href="/"> replace with sqids </a> -->
     </div>
     <ul>
@@ -20,7 +20,7 @@
       <% if (user) { %>
       <a class="navBar" href="/logout"><i class="material-icons left">turned_in</i>Log Out</a>
       <% } else { %>
-      <a class="navBar" href="/auth/google"><i class="material-icons left">turned_in_not</i>Login with Google</a>
+      <a class="navBar" href="/auth/google"><i class="material-icons left">turned_in_not</i>Sign Up/In</a>
       <% } %>
     </div>
   </nav>
@@ -32,20 +32,20 @@
   <form action="/gifs" method="POST">
     <label id="submitTitle">Submit a Gif</label>
     <label>Input Gif Title</label>
-    <li><strong>Example: </strong>Cartman Meme</li>
-    <input id="inputForm" type="text" name="title" placeholder="Input Title of Gif" />
+    <li class="example"><strong>Example: </strong>Cartman Meme</li>
+    <input id="inputForm" type="text" name="title" placeholder="Input Gif Title" />
     <br />
     <label>Input Gif URL</label>
-    <li>
+    <li class="example">
       <strong>Example: </strong>https://media.giphy.com/media/26ufmQSd4DBw0ifU4/giphy.gif
     </li>
     <input id="inputForm" type="text" name="src" placeholder="Input Gif URL" />
     <br />
-    <input type="Submit" value="Submit" />
+    <input id="submitContentBtn" type="Submit" value="Submit" />
   </form>
   <br />
   <h1><%= title %>s</h1>
-  <p>Upload your favorite Gifs!</p>
+  <h3>Upload your favorite Gifs!</h3>
   <div class="container">
     <% gifs.forEach(function(g) { %>
     <!-- Gif Title -->
@@ -54,26 +54,28 @@
     <img src="<%= g.src %>" alt="<%= g.title %> " />
     <!-- Favorites button -->
     <% if(user && user.favoriteGifs.includes(g._id)) { %>
-    <form id="formBtns" action="/gifs/<%= g._id %>/favorites?_method=DELETE" class="delete-form" method="POST">
-      <p>Unfavorite</p>
-      <button class="favBtn" type="submit">
-        <img class="heartImg" src="/images/unfav-heart.png" alt="Heart" />
-      </button>
-    </form>
-    <% } else { %>
-    <form id="formBtns" action="/gifs/<%= g._id %>/favorites" class="favorite-form" method="POST">
-      <p>Favorite</p>
-      <button class="favBtn" type="submit">
-        <img class="heartImg" src="/images/fav-heart.png" alt="Heart" />
-      </button>
-    </form>
-    <% }; %> <% if (user && g.createdby) { %> <% if(user._id.toString() ==
-      g.createdby.toString()) { %>
-    <!-- To delete button -->
-    <form id="formBtns" action="/gifs/<%= g._id %>?_method=DELETE" class="delete-form" method="POST">
-      <p>Delete</p>
-      <button class="deleBtn" type="submit">X</button>
-    </form>
+    <div class="iconsContainer">
+      <form id="formBtns" action="/gifs/<%= g._id %>/favorites?_method=DELETE" class="delete-form" method="POST">
+        <p>Unfavorite</p>
+        <button class="favBtn" type="submit">
+          <img class="heartImg" src="/images/unfav-heart.png" alt="Heart" />
+        </button>
+      </form>
+      <% } else { %>
+      <form id="formBtns" action="/gifs/<%= g._id %>/favorites" class="favorite-form" method="POST">
+        <p>Favorite</p>
+        <button class="favBtn" type="submit">
+          <img class="heartImg" src="/images/fav-heart.png" alt="Heart" />
+        </button>
+      </form>
+      <% }; %> <% if (user && g.createdby) { %> <% if(user._id.toString() ==
+            g.createdby.toString()) { %>
+      <!-- To delete button -->
+      <form id="formBtns" action="/gifs/<%= g._id %>?_method=DELETE" class="delete-form" method="POST">
+        <p>Delete</p>
+        <button class="deleBtn" type="submit">X</button>
+      </form>
+    </div>
     <% } else {} %> <% } else {} %>
     <!-- Input comments -->
     <form id="" method="POST" action="/gifs/<%= g._id %>/comments">
@@ -92,44 +94,49 @@
     </form>
     <!-- Show comments -->
     <% if (g.comments.length) { %>
-    <table>
-      <thead>
-        <tr>
-          <th class="infoBar">Created By</th>
-          <th class="infoBar">Comments</th>
-          <th class="infoBar">Ratings</th>
-          <th class="infoBar">Delete</th>
-          <th class="infoBar">Edit</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% g.comments.forEach(function(com) { %>
-        <tr>
-          <td class="createdby"><%= com.createdby.name %></td>
-          <td class="comments"><%= com.content %></td>
-          <td class="ratings"><%= com.rating %></td>
-          <td>
-            <% if (com.createdby.equals(user && user._id)) { %>
-            <form action="/gifs/<%= g._id %>/comments/<%= com._id %>?_method=DELETE" class="formSpec" method="POST">
-              <button class="deleBtn" type="submit">X</button>
-            </form>
-            <% } else { %>
-            <p>...</p>
-            <% }; %>
-          </td>
-          <td>
-            <!-- Edit Comments -->
+    <div class="subContainer">
+      <table>
+        <caption>Reviews</caption>
+        <thead>
+          <tr>
+            <th class="usernameTh">Username</th>
+            <th class="commentsTh">Comments</th>
+            <th class="ratingsTh">Ratings</th>
+            <th class="deleteTh">Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% g.comments.forEach(function(com) { %>
+          <tr>
+            <td class="createdBy"><%= com.createdby.name %></td>
+            <td class="comments"><%= com.content %></td>
+            <td class="ratings"><%= com.rating %></td>
+            <td>
+              <% if (com.createdby.equals(user && user._id)) { %>
+              <form action="/gifs/<%= g._id %>/comments/<%= com._id %>?_method=DELETE" class="formSpec" method="POST">
+                <button class="deleBtn" type="submit">X</button>
+              </form>
+              <% } else { %>
+              <p class="dots">...</p>
+              <% }; %>
+            </td>
+          </tr>
+        </tbody>
+        <thead>
+          <th colspan="4">Edit Comment</th>
+        </thead>
+        <tbody>
+          <td colspan="4" class="editComTh">
             <form action="/gifs/<%= g._id %>/comments/<%=com._id %>?_method=PUT" class="formSpec" method="POST"
               autocomplete="off">
               <input id="updateInput" type="text" name="content" value="<% g.comments %>" />
-              <button type="submit">Update</button>
+              <button class="updateBtn" type="submit">Update</button>
             </form>
-            <!-- New ^^^ -->
           </td>
-        </tr>
+        </tbody>
         <% }); %>
-      </tbody>
-    </table>
+      </table>
+    </div>
     <% } else { %>
     <p>^No Comments Yet^</p>
     <% } %> <% }); %>

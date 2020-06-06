@@ -36,8 +36,13 @@ header {
   height: 4rem;
 }
 
-#logoTxt {
-  font-size: 1rem;
+.logoTxt {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #6d6975;
+  background-color: inherit; 
+  border: none;
+  font-family: "Courier New", "Courier", "monospace";
 }
 
 nav {
@@ -50,7 +55,6 @@ nav {
   padding: 0 1rem;
   text-decoration: none;
   box-shadow: none;
-  /* line-height: 5rem; */
 }
 
 .navBar {
@@ -97,13 +101,6 @@ main {
   margin: 1.5rem 2rem;
   width: auto;
   height: auto;
-}
-
-h1 {
-  color: #6d6975;
-  margin: 0.5rem;
-  text-decoration: underline #ffcdb2 dotted;
-  text-shadow: 2px 2px #ffcdb2;
 }
 
 #homeImg {
@@ -169,31 +166,92 @@ section > li {
   border: 1rem solid #6d6975;
 }
 
-th {
-  font-size: 1.5rem;
-  text-align: center;
-}
-
-tr,
-td {
-  text-align: center;
-  font-size: 1rem;
-}
-
-.createdBy,
-.comments,
-.rating {
-  text-transform: capitalize;
-  justify-items: center;
+h1 {
+  font-size: 4rem;
+  color: #3d3b42;
+  margin: 0.5rem;
+  text-decoration: underline #ffcdb2 dotted;
+  text-shadow: 2px 2px #ffcdb2;
 }
 
 h2 {
-  font-size: 2rem;
+  font-size: 3em;
   text-align: center;
   text-transform: capitalize;
+  color: #3d3b42;
   margin: 0;
   padding: 1rem;
 }
+
+h3 {
+  margin: 0 0 1rem;
+  font-size: 1.5rem;
+  font-style: oblique;
+  color: #6d6975;
+}
+
+/* table */
+.subContainer {
+  display: flex;
+}
+
+table {
+  margin: 0 auto;
+  width: 80vw;
+  color: #6d6975;
+}
+
+th {
+  text-align: left;
+  text-decoration: underline #6d6975;  
+}
+
+table, th, td {
+  border: 1px solid #6d6975;
+}
+td {
+  padding: 0;
+}
+
+td, th {
+  margin: 0;
+  padding: 0 .5rem;
+}
+
+.editComTh {
+  justify-content: center;
+  width: 1000vw;
+}
+
+.updateBtn {
+  margin: 0 0 .5rem;
+}
+
+caption {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.usernameTh {
+  width: 50rem;
+}
+
+.commentsTh {
+  width: 75rem;
+}
+
+.createdBy,
+.comments {
+  text-transform: capitalize;
+}
+
+.dots,
+.ratings {
+  text-transform: capitalize;
+  text-align: center;
+}
+
+/* ^^^ */
 
 /* heart */
 .heartImg {
@@ -228,7 +286,7 @@ h2 {
 }
 
 label {
-  color: black;
+  color: #333;
   font-size: 1.5rem;
 }
 
@@ -247,13 +305,17 @@ form {
   width: unset;
 }
 
+.iconsContainer {
+  display: flex;
+}
+
 #formBtns {
   flex-direction: row;
   padding: 0.5rem 1rem;
 }
 
 form > p {
-  padding: 0 2rem;
+  padding: 0 .25rem;
   justify-content: start;
 }
 
@@ -312,11 +374,11 @@ input {
 }
 
 #updateInput {
-  background-color: white;
+  background-color: #ffe6d9;
   color: black;
   border: 2px solid black;
-  padding: 0.5rem;
-  /* width: 100px; */
+  padding: .25rem;
+  width: 100%;
 }
 
 textarea {
@@ -333,13 +395,24 @@ select {
   display: block;
 }
 
-#submitBtn {
-  color: #6d6975;
+#submitBtn, #submitContentBtn {
   width: 135%;
   margin: 1rem;
-  padding: 0.75rem;
+  width: 12rem;
   border-radius: 50px;
+  color: #6d6975;
+  background-color: #FAB4C2;
+  border: 2px solid #6d6975;
 }
+
+button {
+  background-color: #FAB4C2;
+  color: #6d6975;
+  padding: .25rem .75rem;
+  border-radius: 50px;
+  border: 2px solid #6d6975;
+}
+
 
 /* heart animation */
 
@@ -358,24 +431,21 @@ select {
 
 @media only screen and (max-device-width: 480px) {
   html {
-    width: fit-content;
+    width: 480px;
   }
+}
 
-  .navBar {
-    color: #6d6975;
-    font-weight: bold;
-    font-size: 0.5rem;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    text-decoration: none;
+@media only screen and (max-device-width: 1024px)  {
+  html {
+    width: 1024px;
   }
+}
 
-  #logoTxt {
-    font-size: 0.5rem;
+@media only screen and (max-device-width: 568px) {
+  html {
+    width: 568;
   }
-
-  h1 {
+  a {
     font-size: 2rem;
   }
 }

@@ -2,8 +2,8 @@
 <header>
   <nav>
     <div class="logoNavStuff">
-      <a class="navBar" id="logoTxt" href="/"><img src="/images/Logo.png" alt="LA" class="logoimg" /><%= title
-          %>spirations</a>
+      <a class="navBar" id="logoTxt" href="/"><img src="/images/Logo.png" alt="LA"
+          class="logoimg" /><%= title %>spirations</a>
     </div>
     <ul>
       <li><a class="navBar" href="/">Home</a></li>
@@ -18,7 +18,7 @@
       <% if (user) { %>
       <a class="navBar" href="/logout"><i class="material-icons left">turned_in</i>Log Out</a>
       <% } else { %>
-      <a class="navBar" href="/auth/google"><i class="material-icons left">turned_in_not</i>Login with Google</a>
+      <a class="navBar" href="/auth/google"><i class="material-icons left">turned_in_not</i>Sign Up/In</a>
       <% } %>
     </div>
   </nav>
@@ -38,7 +38,7 @@
     </li>
     <input id="inputForm" type="text" name="src" placeholder="Url link to video" />
     <br />
-    <input type="Submit" value="Submit" />
+    <input id="submitContentBtn" type="Submit" value="Submit" />
   </form>
   <br />
   <h1><%= title %>eos</h1>
@@ -91,45 +91,50 @@
     </form>
     <!-- Show comments -->
     <% if (vid.comments.length) { %>
-    <table>
-      <thead>
-        <tr>
-          <th class="infoBar">Created By</th>
-          <th class="infoBar">Comments</th>
-          <th class="infoBar">Ratings</th>
-          <th class="infoBar">Delete</th>
-          <th class="infoBar">Edit</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% vid.comments.forEach(function(com) { %>
-        <tr>
-          <td class="createdby"><%= com.createdby.name %></td>
-          <td class="comments"><%= com.content %></td>
-          <td class="ratings"><%= com.rating %></td>
-          <td>
-            <% if (com.createdby.equals(user && user._id)) { %>
-            <form action="/videos/<%= vid._id %>/comments/<%= com._id %>?_method=DELETE" class="formSpec" method="POST"
-              // style="width: unset;">
-              <button class="deleBtn" type="submit">X</button>
-            </form>
-            <% } else { %>
-            <p>...</p>
-            <% }; %>
-          </td>
-          <td>
+    <div class="subContainer">
+      <table>
+        <caption>Reviews</caption>
+        <thead>
+          <tr>
+            <th class="usernameTh">Username</th>
+            <th class="commentsTh">Comments</th>
+            <th class="ratingsTh">Ratings</th>
+            <th class="deleteTh">Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% vid.comments.forEach(function(com) { %>
+          <tr>
+            <td class="createdBy"><%= com.createdby.name %></td>
+            <td class="comments"><%= com.content %></td>
+            <td class="ratings"><%= com.rating %></td>
+            <td>
+              <% if (com.createdby.equals(user && user._id)) { %>
+              <form action="/videos/<%= vid._id %>/comments/<%= com._id %>?_method=DELETE" class="formSpec"
+                method="POST" <button class="deleBtn" type="submit">X</button>
+              </form>
+              <% } else { %>
+              <p class="dots">...</p>
+              <% }; %>
+            </td>
+          </tr>
+        </tbody>
+        <thead>
+          <th colspan="4">Edit Comment</th>
+        </thead>
+        <tbody>
+          <td colspan="4" class="editComTh">
             <!-- Edit Comments -->
             <form action="/videos/<%= vid._id %>/comments/<%=com._id %>?_method=PUT" class="formSpec" method="POST"
               autocomplete="off">
               <input id="updateInput" type="text" name="content" value="<% vid.comments %>" />
-              <button type="submit">Update</button>
+              <button class="updateBtn" type="submit">Update</button>
             </form>
-            <!-- New ^^^ -->
           </td>
-        </tr>
+        </tbody>
         <% }); %>
-      </tbody>
-    </table>
+      </table>
+    </div>
     <% } else { %>
     <p>^No Comments Yet^</p>
     <% } %> <% }); %>
