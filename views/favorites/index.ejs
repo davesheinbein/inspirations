@@ -69,16 +69,22 @@
                 <button class="deleBtn" type="submit">X</button>
               </form>
             </td>
-            <td>
-              <!-- Edit Comments -->
-              <form action="/gifs/<%= g._id %>/comments/<%=com._id %>?_method=PUT" class="formSpec" method="POST"
-                autocomplete="off">
-                <input id="updateInput" type="text" name="content" value="<% g.comments %>" />
-                <button type="submit">Update</button>
-              </form>
-            </td>
-          </tr>
-          <% }); %>
+        </tbody>
+        <thead>
+          <th colspan="4">Edit Comment</th>
+        </thead>
+        <tbody>
+          <td colspan="4" class="editComTh">
+            <!-- Edit Comments -->
+            <form action="/gifs/<%= g._id %>/comments/<%=com._id %>?_method=PUT" class="formSpec" method="POST"
+              autocomplete="off">
+              <input id="updateInput" type="text" name="content" value="<% g.comments %>" />
+              <button type="submit">Update</button>
+            </form>
+          </td>
+        </tbody>
+        </tr>
+        <% }); %>
         </tbody>
       </table>
     </div>
@@ -132,7 +138,7 @@
         <th colspan="4">Edit Comment</th>
       </thead>
       <tbody>
-        <td>
+        <td colspan="4" class="editComTh">
           <!-- Edit Comments -->
           <form action="/videos/<%= vid._id %>/comments/<%=com._id %>?_method=PUT" class="formSpec" method="POST"
             autocomplete="off">
