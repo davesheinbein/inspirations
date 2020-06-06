@@ -8,7 +8,7 @@ var userSchema = new Schema(
     avatar: String,
     favoriteGifs: [{ type: Schema.Types.ObjectId, ref: "Gif" }],
     favoriteVideos: [{ type: Schema.Types.ObjectId, ref: "Video" }],
-    googleId: String, // new
+    googleId: String, 
   },
   {
     timestamps: true,

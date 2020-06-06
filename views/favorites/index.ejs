@@ -2,8 +2,9 @@
 
 <header>
   <nav>
-    <div>
-      <a class="navBar" id="logoTxt" href="/"><img src="/images/Logo.png" alt="LA" class="logoimg" />Fav<%= title %></a>
+    <div class="logoNavStuff">
+      <a class="navBar" href="/"><img src="/images/Logo.png" alt="LA" class="logoimg" /></a>
+      <button class="logoTxt" type="submit"><a href="/">Fav<%= title %></a></button>
     </div>
     <ul>
       <li><a class="navBar" href="/">Home</a></li>
@@ -23,7 +24,6 @@
       <% } else { %>
 
       <a class="navBar" href="/auth/google"><i class="material-icons left">turned_in_not</i>Sign Up/In</a>
-      <%# } %>
       <% }; %>
     </div>
   </nav>

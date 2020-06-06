@@ -24,18 +24,16 @@ function index(req, res) {
       });
     });
 }
-// works
+
 function create(req, res) {
   function getId(url) {
     const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
     const match = url.match(regExp);
     return match && match[2].length === 11 ? match[2] : null;
   }
-  // console.log(req.body);
   const videoId = getId(req.body.src);
   req.body.src = `//www.youtube.com/embed/${videoId}`;
   req.body.createdby = req.user._id;
-  // console.log(req.body);
   Video.create(req.body, function (err, video) {
     res.redirect("/videos");
   });
@@ -43,10 +41,8 @@ function create(req, res) {
 
 function show(req, res) {
   User.findById(req.params.id, function (err, video) {
-    // changed gif to video in function
     Video.find({ video: video._id }, function (err, videos) {
-      // changed gif to video in funtion
-      res.render("/videos/show", { title: "Video Details", video, videos }); // changed gif to video & gifs to videos
+      res.render("/videos/show", { title: "Video Details", video, videos }); 
     });
   });
 }

@@ -43,8 +43,6 @@ function updateGifCom(req, res) {
   });
 }
 
-// ^^^^^^
-
 // videos
 function createVidComment(req, res) {
   req.body.createdby = req.user._id;

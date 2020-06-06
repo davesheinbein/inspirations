@@ -6,13 +6,13 @@ router.get("/favorites", favCtrl.index);
 // Gifs favorite
 router.post("/gifs/:id/favorites", isLoggedIn, favCtrl.addGifFav);
 
-//delete Gif favorite
+// Delete Gif favorite
 router.delete("/gifs/:id/favorites", isLoggedIn, favCtrl.removeGifFav);
 
 // Videos favorite
 router.post("/videos/:id/favorites", isLoggedIn, favCtrl.addVidFav);
 
-// delete Video favorite
+// Delete Video favorite
 router.delete("/videos/:id/favorites", isLoggedIn, favCtrl.removeVidFav);
 
 function isLoggedIn(req, res, next) {

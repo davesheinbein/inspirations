@@ -1,4 +1,3 @@
-// const Favorite = require('../models/favorites');
 const Video = require("../models/video");
 const Gif = require("../models/gif");
 const User = require("../models/user");
@@ -16,14 +15,11 @@ function index(req, res) {
   if (req.user) {
     user = req.user;
   }
-  // console.log(req.user, "req");
   if (user) {
     User.findById(user._id)
       .populate("favoriteVideos")
       .populate("favoriteGifs")
       .exec(function (err, user) {
-        // console.log(user, "user");
-
         res.render("favorites/index", {
           title: "spirations",
           user,
@@ -40,9 +36,7 @@ function index(req, res) {
 // Gifs
 function addGifFav(req, res) {
   Gif.findById(req.params.id, function (err, gif) {
-    // console.log(gif, "gif");
     req.user.favoriteGifs.push(req.params.id);
-    // console.log(req.user.favoriteGifs, "req.user.favoriteGifs");
     req.user.save(function (err) {
       res.redirect(`/gifs`);
     });
@@ -55,7 +49,6 @@ function removeGifFav(req, res) {
   );
   req.user.favoriteGifs.splice(gifIdx, 1);
   req.user.save(function (err) {
-    // console.log(err, "error");
     res.redirect(`/gifs`);
   });
 }
@@ -63,9 +56,7 @@ function removeGifFav(req, res) {
 // videos
 function addVidFav(req, res) {
   Video.findById(req.params.id, function (err, video) {
-    // console.log(gif, "gif");
     req.user.favoriteVideos.push(req.params.id);
-    // console.log(req.user.favoriteVideos, "req.user.favoriteVideos");
     req.user.save(function (err) {
       res.redirect(`/videos`);
     });
@@ -78,7 +69,6 @@ function removeVidFav(req, res) {
   );
   req.user.favoriteVideos.splice(vidIdx, 1);
   req.user.save(function (err) {
-    // console.log(err, "error");
     res.redirect(`/videos`);
   });
 }

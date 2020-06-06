@@ -14,27 +14,23 @@ function index(req, res, next) {
     .populate("comments comments.createdby")
     .exec(function (err, gifs) {
       if (err) return next(err);
-      // Passing search values, name & sortKey, for use in the EJS
       res.render("gifs/index", {
         gifs,
-        user: req.user, // req.user - is our logged in user
+        user: req.user, 
         title: "Gif",
       });
     });
 }
 
 function create(req, res) {
-  // console.log(req.body);
   req.body.createdby = req.user._id;
   Gif.create(req.body, function (err, gif) {
-    console.log(gif);
     res.redirect("/gifs");
   });
 }
 
 function show(req, res) {
   Gif.findById(req.params.id, function (err, gif) {
-    // console.log(gif);
     res.render("gifs/index", { title: "Gif Details", gif, user: req.user });
   });
 }

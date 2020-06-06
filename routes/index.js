@@ -10,7 +10,7 @@ router.get("/", function (req, res) {
   res.render("index", { user, title: "spirations" });
 });
 
-// OAuth v
+// OAuth 
 // Login route
 router.get(
   "/auth/google",
