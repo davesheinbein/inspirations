@@ -79,7 +79,7 @@
             <!-- Edit Comments -->
             <form action="/gifs/<%= g._id %>/comments/<%=com._id %>?_method=PUT" class="formSpec" method="POST"
               autocomplete="off">
-              <input id="updateInput" type="text" name="content" value="<% g.comments %>" />
+              <input id="updateInput" type="text" name="content" value="<% g.comments %>" required />
               <button type="submit">Update</button>
             </form>
           </td>
@@ -146,7 +146,7 @@
             <!-- Edit Comments -->
             <form action="/videos/<%= vid._id %>/comments/<%=com._id %>?_method=PUT" class="formSpec" method="POST"
               autocomplete="off">
-              <input id="updateInput" type="text" name="content" value="<% vid.comments %>" />
+              <input id="updateInput" type="text" name="content" value="<% vid.comments %>" required />
               <button type="submit">Update</button>
             </form>
           </td>

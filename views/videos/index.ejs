@@ -30,13 +30,13 @@
     <label id="submitTitle">Submit a Video</label>
     <label>Input Video Title</label>
     <li><strong>Example: </strong>Lofi Hip Hop Radio</li>
-    <input id="inputForm" type="text" name="title" placeholder="Title of Video" />
+    <input id="inputForm" type="text" name="title" placeholder="Title of Video" required />
     <br />
     <label>Input Youtube Video Url</label>
     <li>
       <strong>Example: </strong>https://www.youtube.com/embed/ifn0u1kwgOk
     </li>
-    <input id="inputForm" type="text" name="src" placeholder="Url link to video" />
+    <input id="inputForm" type="text" name="src" placeholder="Url link to video" required />
     <br />
     <input id="submitContentBtn" type="Submit" value="Submit" />
   </form>
@@ -79,7 +79,7 @@
     <!-- Input comments -->
     <form id="" method="POST" action="/videos/<%= vid._id %>/comments">
       <label>-Comment-</label>
-      <textarea name="content"></textarea>
+      <textarea name="content" required></textarea>
       <label>-Rating-</label>
       <select name="rating">
         <option value="Unrated">Unrated</option>
@@ -129,7 +129,7 @@
             <!-- Edit Comments -->
             <form action="/videos/<%= vid._id %>/comments/<%=com._id %>?_method=PUT" class="formSpec" method="POST"
               autocomplete="off">
-              <input id="updateInput" type="text" name="content" value="<% vid.comments %>" />
+              <input id="updateInput" type="text" name="content" value="<% vid.comments %>" required />
               <button class="updateBtn" type="submit">Update</button>
             </form>
           </td>

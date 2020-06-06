@@ -33,13 +33,13 @@
     <label id="submitTitle">Submit a Gif</label>
     <label>Input Gif Title</label>
     <li class="example"><strong>Example: </strong>Cartman Meme</li>
-    <input id="inputForm" type="text" name="title" placeholder="Input Gif Title" />
+    <input id="inputForm" type="text" name="title" placeholder="Input Gif Title" required />
     <br />
     <label>Input Gif URL</label>
     <li class="example">
       <strong>Example: </strong>https://media.giphy.com/media/26ufmQSd4DBw0ifU4/giphy.gif
     </li>
-    <input id="inputForm" type="text" name="src" placeholder="Input Gif URL" />
+    <input id="inputForm" type="text" name="src" placeholder="Input Gif URL" required/>
     <br />
     <input id="submitContentBtn" type="Submit" value="Submit" />
   </form>
@@ -80,7 +80,7 @@
     <!-- Input comments -->
     <form id="" method="POST" action="/gifs/<%= g._id %>/comments">
       <label>-Comment-</label>
-      <textarea name="content"></textarea>
+      <textarea name="content" required></textarea>
       <label>-Rating-</label>
       <select name="rating">
         <option value="0">Unrated</option>
@@ -129,7 +129,7 @@
           <td colspan="4" class="editComTh">
             <form action="/gifs/<%= g._id %>/comments/<%=com._id %>?_method=PUT" class="formSpec" method="POST"
               autocomplete="off">
-              <input id="updateInput" type="text" name="content" value="<% g.comments %>" />
+              <input id="updateInput" type="text" name="content" value="<% g.comments %>" required/>
               <button class="updateBtn" type="submit">Update</button>
             </form>
           </td>
