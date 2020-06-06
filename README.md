@@ -13,7 +13,7 @@
 ![Gifs Page Sceenshot](/images/wireframe-previews/screenshots/gifs-screenshot.png)
 
 ### Videos Page Sceenshot
-![Videos Page Sceenshot]()
+![Videos Page Sceenshot](../images/wireframe-previews/screenshots/gifs-screenshot.png)
 
 ### Favorites Page (Not Logged-in) Sceenshot
 ![Favorites Page Sceenshot]()
