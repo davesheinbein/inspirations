@@ -38,12 +38,14 @@
     <% user.favoriteGifs.forEach(function(g) { %>
     <img src="<%= g.src %> " alt="<%= g.title %> " />
     <!-- to remove favorite gif -->
-    <form id="formBtns" action="/gifs/<%= g._id %>/favorites?_method=DELETE" class="delete-form" method="POST">
-      <p>Click to unfavorite</p>
-      <button class="favBtn" type="submit">
-        <img class="heartImg" src="/images/unfav-heart.png" alt="Heart" />
-      </button>
-    </form>
+    <div class="iconsContainer">
+      <form id="formBtns" action="/gifs/<%= g._id %>/favorites?_method=DELETE" class="delete-form" method="POST">
+        <p>Click to unfavorite</p>
+        <button class="favBtn" type="submit">
+          <img class="heartImg" src="/images/unfav-heart.png" alt="Heart" />
+        </button>
+      </form>
+    </div>
     <% if (g.comments.length) { %>
     <div class="subContainer">
       <table>
@@ -54,7 +56,6 @@
             <th class="commentsTh">Comments</th>
             <th class="ratingsTh">Ratings</th>
             <th class="deleteTh">Delete</th>
-            <th class="EditTh">Edit</th>
           </tr>
         </thead>
         <tbody>
@@ -104,12 +105,14 @@
     <iframe width="560" height="315" src="<%= vid.src %> " frameborder="0"
       allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     <!-- to remove favorite video -->
-    <form id="formBtns" action="/videos/<%= vid._id %>/favorites?_method=DELETE" class="delete-form" method="POST">
-      <p>Click to unfavorite</p>
-      <button class="favBtn" type="submit">
-        <img class="heartImg" src="/images/unfav-heart.png" alt="Heart" />
-      </button>
-    </form>
+    <div class="iconsContainer">
+      <form id="formBtns" action="/videos/<%= vid._id %>/favorites?_method=DELETE" class="delete-form" method="POST">
+        <p>Click to unfavorite</p>
+        <button class="favBtn" type="submit">
+          <img class="heartImg" src="/images/unfav-heart.png" alt="Heart" />
+        </button>
+      </form>
+    </div>
     <% if (vid.comments.length) { %>
     <table>
       <thead>

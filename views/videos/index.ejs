@@ -53,26 +53,28 @@
 
     <!-- Favorites button -->
     <% if(user && user.favoriteVideos.includes(vid._id)) { %>
-    <form id="formBtns" action="/videos/<%= vid._id %>/favorites?_method=DELETE" class="delete-form" method="POST">
-      <p>Unfavorite</p>
-      <button class="favBtn" type="submit">
-        <img class="heartImg" src="/images/unfav-heart.png" alt="Heart" />
-      </button>
-    </form>
-    <% } else { %>
-    <form id="formBtns" action="/videos/<%= vid._id %>/favorites" class="favorite-form" method="POST">
-      <p>Favorite</p>
-      <button class="favBtn" type="submit">
-        <img class="heartImg" src="/images/fav-heart.png" alt="Heart" />
-      </button>
-    </form>
-    <% }; %> <% if (user && vid.createdby) { %> <% if(user._id.toString() ==
+    <div class="iconsContainer">
+      <form id="formBtns" action="/videos/<%= vid._id %>/favorites?_method=DELETE" class="delete-form" method="POST">
+        <p>Unfavorite</p>
+        <button class="favBtn" type="submit">
+          <img class="heartImg" src="/images/unfav-heart.png" alt="Heart" />
+        </button>
+      </form>
+      <% } else { %>
+      <form id="formBtns" action="/videos/<%= vid._id %>/favorites" class="favorite-form" method="POST">
+        <p>Favorite</p>
+        <button class="favBtn" type="submit">
+          <img class="heartImg" src="/images/fav-heart.png" alt="Heart" />
+        </button>
+      </form>
+      <% }; %> <% if (user && vid.createdby) { %> <% if(user._id.toString() ==
       vid.createdby.toString()) { %>
-    <!-- to delete comment -->
-    <form id="formBtns" action="/videos/<%= vid._id %>?_method=DELETE" class="delete-form" method="POST">
-      <p>Delete</p>
-      <button class="deleBtn" type="submit">X</button>
-    </form>
+      <!-- to delete comment -->
+      <form id="formBtns" action="/videos/<%= vid._id %>?_method=DELETE" class="delete-form" method="POST">
+        <p>Delete</p>
+        <button class="deleBtn" type="submit">X</button>
+      </form>
+    </div>
     <% } else {} %> <% } else {} %>
     <!-- Input comments -->
     <form id="" method="POST" action="/videos/<%= vid._id %>/comments">
