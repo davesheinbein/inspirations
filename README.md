@@ -13,7 +13,7 @@
 ![Gifs Page Sceenshot](/images/wireframe-previews/screenshots/gifs-screenshot.png)
 
 ### Videos Page Sceenshot
-![Videos Page Sceenshot](../images/wireframe-previews/screenshots/gifs-screenshot.png)
+![Videos Page Sceenshot](./images/wireframe-previews/screenshots/gifs-screenshot.png)
 
 ### Favorites Page (Not Logged-in) Sceenshot
 ![Favorites Page Sceenshot](../public/images/wireframe-previews/screenshots/gifs-screenshot.png)
@@ -21,7 +21,6 @@
 ### Favorites Page (Logged-in) Sceenshot
 ![Favorites Page Sceenshot]()
 
-☐ Technologies Used: List of the technologies used.
 ## Technologies Used: 
 
 #### 1. HTML
