@@ -7,10 +7,10 @@
 ## Screenshot:
 
 ### Home Page Sceenshot
-![Home Page Sceenshot](public/images/wireframe-previews/screenshots/homepage-screenshot.png)
+![Home Page Sceenshot](/public/images/wireframe-previews/screenshots/homepage-screenshot.png)
 
 ### Gifs Page Sceenshot
-![Gifs Page Sceenshot](/images/wireframe-previews/screenshots/gifs-screenshot.png)
+![Gifs Page Sceenshot](images/wireframe-previews/screenshots/gifs-screenshot.png)
 
 ### Videos Page Sceenshot
 ![Videos Page Sceenshot](./images/wireframe-previews/screenshots/gifs-screenshot.png)
