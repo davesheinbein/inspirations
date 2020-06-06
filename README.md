@@ -9,27 +9,27 @@ You are also able to favorite gifs & videos. Your favorites will show up on the 
 ## Screenshot:
 
 ### Home Page Sceenshot
-![Home Page Sceenshot](https://imgur.com/YCEiEr5)
+![Home Page Sceenshot](screenshots/homepage-screenshot.png?)
 
 [Home Page Sceenshot](https://imgur.com/YCEiEr5)
 
 ### Gifs Page Sceenshot
-![Gifs Page Sceenshot](hhttps://imgur.com/T8Fbx9X)
+![Gifs Page Sceenshot](screenshots/gifs-screenshot.png)
 
-[Gifs Page Sceenshot](hhttps://imgur.com/T8Fbx9X)
+[Gifs Page Sceenshot](https://imgur.com/T8Fbx9X)
 
 ### Videos Page Sceenshot
-![Videos Page Sceenshot](https://imgur.com/GHruBC2)
+![Videos Page Sceenshot](screenshots/videos-screenshot.png)
 
 [Videos Page Sceenshot](https://imgur.com/GHruBC2)
 
 ### Favorites Page (Not Logged-in) Sceenshot
-![Favorites Page Sceenshot](https://imgur.com/W0WcoUq)
+![Favorites Page Sceenshot](screenshots/fav-not-logged-in-screenshot.png)
 
 [Favorites Page Sceenshot](https://imgur.com/W0WcoUq)
 
 ### Favorites Page (Logged-in) Sceenshot
-![Favorites Page Sceenshot](https://imgur.com/mcYJwv2)
+![Favorites Page Sceenshot](screenshots/fav-logged-in-screenshot.png)
 
 [Favorites Page Sceenshot](https://imgur.com/mcYJwv2)
 
