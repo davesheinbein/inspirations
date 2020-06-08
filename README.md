@@ -51,7 +51,7 @@ You are also able to favorite gifs & videos. Your favorites will show up on the 
 ### Click the link to view the Trello Board
 [Trello Board](https://trello.com/b/Mq3Qp8RD)
 
-![ERD](screenshots/erd.wireframe-previews/erd/ga-project-2.png)
+![ERD](screenshots/erd/wireframe-previews/erd/ga-project-2.png)
 
 ## Potential Next Steps: 
 

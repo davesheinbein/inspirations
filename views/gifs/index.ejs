@@ -39,7 +39,7 @@
     <li class="example">
       <strong>Example: </strong>https://media.giphy.com/media/26ufmQSd4DBw0ifU4/giphy.gif
     </li>
-    <input id="inputForm" type="text" name="src" placeholder="Input Gif URL" required/>
+    <input id="inputForm" type="text" name="src" placeholder="Input Gif URL" required />
     <br />
     <input id="submitContentBtn" type="Submit" value="Submit" />
   </form>
@@ -129,7 +129,7 @@
           <td colspan="4" class="editComTh">
             <form action="/gifs/<%= g._id %>/comments/<%=com._id %>?_method=PUT" class="formSpec" method="POST"
               autocomplete="off">
-              <input id="updateInput" type="text" name="content" value="<% g.comments %>" required/>
+              <input id="updateInput" type="text" name="content" value="<% g.comments %>" required />
               <button class="updateBtn" type="submit">Update</button>
             </form>
           </td>
