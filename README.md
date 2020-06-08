@@ -39,10 +39,11 @@ You are also able to favorite gifs & videos. Your favorites will show up on the 
 #### 2. CSS
 #### 3. JavaScript
 #### 4. MongoDB
-#### 5. Node.js
-#### 6. Express
-#### 7. Postman
-#### 8. Heroku
+#### 5. Mongoose
+#### 6. Node.js
+#### 7. Express
+#### 8. Postman
+#### 9. Heroku
 
 
 ### Click the link to view the website
