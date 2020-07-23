@@ -33,9 +33,7 @@
     <input id="inputForm" type="text" name="title" placeholder="Title of Video" required />
     <br />
     <label>Input Youtube Video Url</label>
-    <li>
-      <strong>Example: </strong>https://www.youtube.com/embed/ifn0u1kwgOk
-    </li>
+    <li><strong>Example: </strong>https://www.youtube.com/embed/ifn0u1kwgOk</li>
     <input id="inputForm" type="text" name="src" placeholder="Url link to video" required />
     <br />
     <input id="submitContentBtn" type="Submit" value="Submit" />
@@ -67,15 +65,17 @@
           <img class="heartImg" src="/images/fav-heart.png" alt="Heart" />
         </button>
       </form>
-      <% }; %> <% if (user && vid.createdby) { %> <% if(user._id.toString() ==
-      vid.createdby.toString()) { %>
+      <% }; %>
+      <% if (user && vid.createdby) { %>
+      <% if(user._id.toString() == vid.createdby.toString()) { %>
       <!-- to delete comment -->
       <form id="formBtns" action="/videos/<%= vid._id %>?_method=DELETE" class="delete-form" method="POST">
         <p>Delete</p>
         <button class="deleBtn" type="submit">X</button>
       </form>
     </div>
-    <% } else {} %> <% } else {} %>
+    <% } else {} %>
+    <% } else {} %>
     <!-- Input comments -->
     <form id="" method="POST" action="/videos/<%= vid._id %>/comments">
       <label>-Comment-</label>
@@ -139,6 +139,7 @@
     </div>
     <% } else { %>
     <p>^No Comments Yet^</p>
-    <% } %> <% }); %>
+    <% } %>
+    <% }); %>
   </div>
   <%- include('../partials/footer') %>

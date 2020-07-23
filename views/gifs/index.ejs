@@ -68,15 +68,17 @@
           <img class="heartImg" src="/images/fav-heart.png" alt="Heart" />
         </button>
       </form>
-      <% }; %> <% if (user && g.createdby) { %> <% if(user._id.toString() ==
-            g.createdby.toString()) { %>
+      <% }; %>
+      <% if (user && g.createdby) { %>
+      <% if(user._id.toString() == g.createdby.toString()) { %>
       <!-- To delete button -->
       <form id="formBtns" action="/gifs/<%= g._id %>?_method=DELETE" class="delete-form" method="POST">
         <p>Delete</p>
         <button class="deleBtn" type="submit">X</button>
       </form>
     </div>
-    <% } else {} %> <% } else {} %>
+    <% } else {} %>
+    <% } else {} %>
     <!-- Input comments -->
     <form id="" method="POST" action="/gifs/<%= g._id %>/comments">
       <label>-Comment-</label>
@@ -139,6 +141,7 @@
     </div>
     <% } else { %>
     <p>^No Comments Yet^</p>
-    <% } %> <% }); %>
+    <% } %> 
+    <% }); %>
   </div>
   <%- include('../partials/footer') %>

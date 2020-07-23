@@ -9,7 +9,7 @@ You are also able to favorite gifs & videos. Your favorites will show up on the 
 ## Screenshot:
 
 ### Home Page Sceenshot
-![Home Page Sceenshot](screenshots/homepage-screenshot.png?)
+![Home Page Sceenshot](screenshots/homepage-screenshot.png)
 
 [Home Page Sceenshot](https://imgur.com/YCEiEr5)
 
@@ -35,7 +35,7 @@ You are also able to favorite gifs & videos. Your favorites will show up on the 
 
 ## Technologies Used: 
 
-#### 1. HTML
+#### 1. HTML5
 #### 2. CSS
 #### 3. JavaScript
 #### 4. MongoDB
